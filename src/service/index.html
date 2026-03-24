@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事業内容 | Provydal</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.page-wrap { background: #fff; min-height: 100vh; }
+.page-header { padding: 140px 64px 72px; border-bottom: 1px solid #e8ecf4; }
+.page-header__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.page-header__label { font-family: Georgia,serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); opacity: 0.45; margin-bottom: 16px; }
+.page-header__title { font-family: Georgia,serif; font-size: clamp(40px,6vw,72px); font-weight: 700; color: var(--navy); line-height: 1.05; letter-spacing: -2px; margin-bottom: 0; }
+.page-header__lead { font-size: 15px; line-height: 1.9; color: #666; max-width: 420px; }
+.page-header--navy { background: var(--navy); border-bottom: none; }
+.page-header--navy .page-header__label { color: #fff; opacity: 0.4; }
+.page-header--navy .page-header__title { color: #fff; }
+.page-header--navy .page-header__lead { color: rgba(255,255,255,0.65); }
+.page-cta { background: var(--navy); padding: 80px 64px; }
+.page-cta__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-cta p { font-family: Georgia,serif; font-size: clamp(18px,3vw,26px); font-weight: 700; color: #fff; }
+@media(max-width:768px){ .page-header{padding:120px 24px 48px;} .page-cta{padding:60px 24px;} .page-cta__inner{flex-direction:column;align-items:flex-start;} }
+
+.svc-grid { padding: 64px 64px 120px; }
+.svc-grid__inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.svc-card { display: block; text-decoration: none; color: inherit; padding: 56px 48px 48px; background: #f7f8fc; position: relative; overflow: hidden; transition: background 0.25s; cursor: pointer; }
+.svc-card:hover { background: #eef1fa; }
+.svc-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--navy); transform:scaleX(0); transform-origin:left; transition:transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+.svc-card:hover::after { transform:scaleX(1); }
+.svc-card__icon { width:52px; height:52px; background:var(--navy); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:28px; font-size:22px; }
+.svc-card__num { font-family:Georgia,serif; font-size:11px; color:var(--navy); opacity:0.3; letter-spacing:2px; margin-bottom:10px; }
+.svc-card__title { font-family:Georgia,serif; font-size:clamp(22px,3vw,30px); font-weight:700; color:var(--navy); line-height:1.15; margin-bottom:14px; letter-spacing:-0.5px; }
+.svc-card__desc { font-size:14px; line-height:1.85; color:#555; margin-bottom:28px; max-width:360px; }
+.svc-card__tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:32px; }
+.svc-card__tag { font-size:11px; color:var(--navy); border:1px solid rgba(26,58,140,0.2); padding:3px 10px; border-radius:20px; }
+.svc-card__arrow { font-family:Georgia,serif; font-size:13px; color:var(--navy); font-weight:600; display:inline-flex; align-items:center; gap:8px; transition:gap 0.2s; }
+.svc-card:hover .svc-card__arrow { gap:14px; }
+@media(max-width:768px){ .svc-grid{padding:48px 24px 80px;} .svc-grid__inner{grid-template-columns:1fr;} .svc-card{padding:40px 28px;} }
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+<main>
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header__inner">
+      <div>
+        <p class="page-header__label">Service</p>
+        <h1 class="page-header__title">事業内容</h1>
+      </div>
+      <p class="page-header__lead">課題に合わせて、必要な開発を。受託開発からAI導入支援まで、デジタル化に必要なすべてをワンストップで提供します。</p>
+    </div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-grid__inner">
+      <a href="/service/dev/" class="svc-card fade-up">
+        <div class="svc-card__icon">💻</div>
+        <p class="svc-card__num">01</p>
+        <h2 class="svc-card__title">受託開発 /<br>Web制作</h2>
+        <p class="svc-card__desc">コーポレートサイトからWebアプリ・管理画面まで。要件定義から納品・運用保守まで一貫して対応します。</p>
+        <div class="svc-card__tags"><span class="svc-card__tag">コーポレートサイト</span><span class="svc-card__tag">Webアプリ</span><span class="svc-card__tag">LP制作</span><span class="svc-card__tag">管理画面</span></div>
+        <span class="svc-card__arrow">詳細を見る →</span>
+      </a>
+      <a href="/service/ai/" class="svc-card fade-up">
+        <div class="svc-card__icon">🤖</div>
+        <p class="svc-card__num">02</p>
+        <h2 class="svc-card__title">AI導入支援</h2>
+        <p class="svc-card__desc">ChatGPTをはじめとする生成AIの業務活用を支援。PoC設計から社内展開まで伴走します。</p>
+        <div class="svc-card__tags"><span class="svc-card__tag">生成AI活用</span><span class="svc-card__tag">ChatGPT導入</span><span class="svc-card__tag">AI研修</span><span class="svc-card__tag">RAG構築</span></div>
+        <span class="svc-card__arrow">詳細を見る →</span>
+      </a>
+      <a href="/service/line/" class="svc-card fade-up">
+        <div class="svc-card__icon">💬</div>
+        <p class="svc-card__num">03</p>
+        <h2 class="svc-card__title">LINE連携 /<br>業務自動化</h2>
+        <p class="svc-card__desc">LINE公式アカウントを活用した問い合わせ自動化・顧客対応効率化・社内通知システムを構築します。</p>
+        <div class="svc-card__tags"><span class="svc-card__tag">LINE自動応答</span><span class="svc-card__tag">予約自動化</span><span class="svc-card__tag">社内通知</span><span class="svc-card__tag">CRM連携</span></div>
+        <span class="svc-card__arrow">詳細を見る →</span>
+      </a>
+      <a href="/service/sys/" class="svc-card fade-up">
+        <div class="svc-card__icon">⚙️</div>
+        <p class="svc-card__num">04</p>
+        <h2 class="svc-card__title">業務システム開発</h2>
+        <p class="svc-card__desc">管理画面・予約システム・社内ツールなど、現場の課題に合わせたカスタム業務システムを開発します。</p>
+        <div class="svc-card__tags"><span class="svc-card__tag">管理画面</span><span class="svc-card__tag">予約システム</span><span class="svc-card__tag">社内ポータル</span><span class="svc-card__tag">リプレイス</span></div>
+        <span class="svc-card__arrow">詳細を見る →</span>
+      </a>
+    </div>
+  </div>
+  <div class="page-cta"><div class="page-cta__inner"><p>どのサービスが合うかわからない場合もお気軽に</p><a href="/contact/" class="btn-fill">ご相談はこちら<span>Contact Us</span></a></div></div>
+</div></main>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a><a href="/about/#vision">ビジョン</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script type="module">
+import { initNav } from '/js/nav.js';
+initNav();
+document.querySelectorAll('.fade-up').forEach(function(el){
+  new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible')});},{threshold:0.08}).observe(el);
+});
+</script>
+
+</body>
+</html>

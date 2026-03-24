@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>不動産プラットフォームの開発案件を受注・着工 | Provydal News</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+
+.art-header{background:var(--navy);padding:140px 48px 80px;}
+.art-header__inner{max-width:800px;margin:0 auto;}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;transition:color .2s;}
+.art-back:hover{color:#fff;}
+.art-tag{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:3px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.art-title{font-family:var(--font);font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;}
+.art-meta{display:flex;gap:24px;align-items:center;}
+.art-meta__date,.art-meta__by{font-size:13px;color:rgba(255,255,255,.45);}
+
+.art-eyecatch{width:100%;aspect-ratio:16/6;background:linear-gradient(135deg,#c8d4f0,#e8ecf8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.art-eyecatch__bg{position:absolute;inset:0;}
+.art-eyecatch__icon{font-size:clamp(60px,10vw,120px);opacity:.15;user-select:none;position:relative;z-index:1;}
+.art-eyecatch__text{position:absolute;z-index:2;text-align:center;}
+.art-eyecatch__text h2{font-family:var(--font);font-size:clamp(16px,3vw,26px);font-weight:700;color:var(--navy);opacity:.85;margin-bottom:8px;}
+.art-eyecatch__text p{font-size:12px;color:var(--navy);opacity:.5;}
+
+.art-body-wrap{max-width:800px;margin:0 auto;padding:64px 48px 80px;}
+.art-lead{font-size:17px;line-height:2;color:#333;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #e8ecf4;}
+
+.art-section{margin-bottom:52px;}
+.art-section h2{font-family:var(--font);font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--navy);margin-bottom:20px;padding-left:16px;border-left:4px solid var(--navy);}
+.art-section h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.art-section p{font-size:15px;line-height:2;color:#333;margin-bottom:16px;}
+.art-section ul{margin:0 0 16px 1.5em;}
+.art-section ul li{font-size:15px;line-height:1.9;color:#333;margin-bottom:8px;}
+
+.art-box{background:#f0f4ff;border-left:4px solid var(--navy);padding:24px 28px;margin:24px 0;border-radius:0 4px 4px 0;}
+.art-box p{font-size:15px;line-height:1.9;color:#333;margin:0;}
+.art-box strong{color:var(--navy);}
+
+/* Before/After */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:24px 0;}
+.ba-col{padding:28px 28px;}
+.ba-col--before{background:#fff5f5;}
+.ba-col--after{background:#f0fff4;}
+.ba-col__label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:block;}
+.ba-col--before .ba-col__label{color:#e05252;}
+.ba-col--after .ba-col__label{color:#2e7d32;}
+.ba-col h4{font-size:15px;font-weight:700;color:#333;margin-bottom:10px;}
+.ba-col ul{margin-left:1.2em;}
+.ba-col ul li{font-size:14px;line-height:1.8;color:#444;margin-bottom:6px;}
+
+/* 技術スタック */
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;}
+.tech-card{background:#f7f8fc;padding:20px 20px;border-bottom:2px solid var(--navy);}
+.tech-card__label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:10px;display:block;}
+.tech-card__items{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-tag{font-size:12px;background:#fff;border:1px solid #d0d8ee;color:var(--navy);padding:3px 10px;border-radius:3px;}
+
+/* 機能リスト */
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;}
+.feature-item{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;background:#f7f8fc;}
+.feature-item__icon{font-size:20px;flex-shrink:0;line-height:1.3;}
+.feature-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.feature-item p{font-size:12px;line-height:1.7;color:#666;}
+
+.art-cta{background:var(--navy);padding:48px;border-radius:6px;text-align:center;margin-top:64px;}
+.art-cta h3{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.8;}
+.art-cta a{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:16px 48px;transition:opacity .2s;}
+.art-cta a:hover{opacity:.88;}
+.art-cta a span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+.art-related{margin-top:64px;padding-top:40px;border-top:1px solid #e8ecf4;}
+.art-related h3{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:20px;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-related-card{display:block;padding:20px 24px;background:#f7f8fc;border-left:3px solid var(--navy);transition:background .2s;}
+.art-related-card:hover{background:#eef1fa;}
+.art-related-card__tag{font-size:10px;color:var(--navy);opacity:.45;margin-bottom:6px;display:block;}
+.art-related-card__title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5;}
+
+@media(max-width:768px){
+  .art-header{padding:120px 24px 60px;}
+  .art-body-wrap{padding:48px 20px 60px;}
+  .ba-grid,.tech-grid,.feature-list,.art-related-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="art-header">
+  <div class="art-header__inner">
+    <a href="/news/" class="art-back">← ニュース一覧へ戻る</a>
+    <p class="art-tag">実績</p>
+    <h1 class="art-title">不動産プラットフォームの開発案件を受注・着工——<br>古いサイトからの脱却、Web集客を根本から再構築</h1>
+    <div class="art-meta">
+      <span class="art-meta__date">2026年3月10日</span>
+      <span class="art-meta__by">Provydal 広報</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-eyecatch">
+  <div class="art-eyecatch__icon">🏠</div>
+  <div class="art-eyecatch__text">
+    <h2>物件検索プラットフォーム開発</h2>
+    <p>Next.js / Node.js / LINE連携による本格Webアプリ</p>
+  </div>
+</div>
+
+<div class="art-body-wrap">
+  <p class="art-lead">株式会社プロバイダル（Provydal）は、東京都内で不動産仲介業を営む株式会社R様より、物件検索プラットフォームのフルスクラッチ開発を受注し、2026年3月より開発を開始しました。既存サイトの老朽化による集客課題を解決するため、要件定義・設計・開発・運用まで一貫して担当します。</p>
+
+  <div class="art-section">
+    <h2>課題——「サイトはあるのに誰も来ない」状態からの脱却</h2>
+    <p>株式会社R様は10年以上の業歴を持つ不動産仲介会社様です。物件情報は豊富にあるものの、Webからの問い合わせはほぼゼロに近い状態が続いていました。</p>
+    <div class="ba-grid">
+      <div class="ba-col ba-col--before">
+        <span class="ba-col__label">Before — 課題</span>
+        <h4>10年前に作ったサイトがそのまま</h4>
+        <ul>
+          <li>スマートフォン非対応（PC専用レイアウト）</li>
+          <li>物件情報が手動更新で常に情報が古い</li>
+          <li>検索機能がなく「一覧を見るだけ」のサイト</li>
+          <li>Googleの検索結果にほぼ表示されない</li>
+          <li>問い合わせはほぼ紹介・口コミのみ</li>
+        </ul>
+      </div>
+      <div class="ba-col ba-col--after">
+        <span class="ba-col__label">After — 目指す状態</span>
+        <h4>Webで集客できるプラットフォームへ</h4>
+        <ul>
+          <li>スマホ完全対応・高速表示</li>
+          <li>条件検索・絞り込みで使いやすいUX</li>
+          <li>管理画面から物件情報をリアルタイム更新</li>
+          <li>SEO対策済みの構造化データ・OGP設定</li>
+          <li>LINE連携で問い合わせ・来店予約を自動化</li>
+        </ul>
+      </div>
+    </div>
+    <div class="art-box">
+      <p><strong>Provydalへの依頼の決め手：</strong>「大手の制作会社に相談したら500万円以上の見積もりが来て驚いた。Provydalは要件定義の段階から一緒に整理してくれて、本当に必要な機能を絞り込んでくれた。予算内で本格的なシステムが作れると感じた」（株式会社R 担当者）</p>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>開発する機能</h2>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-item__icon">🔍</div>
+        <div>
+          <h4>物件検索・絞り込み</h4>
+          <p>エリア・価格・間取り・駅徒歩・築年数などの条件で絞り込める高速検索。地図連動表示にも対応。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item__icon">📱</div>
+        <div>
+          <h4>物件詳細ページ</h4>
+          <p>画像ギャラリー・360度写真・周辺施設マップ・問い合わせフォームを1ページに集約。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item__icon">💬</div>
+        <div>
+          <h4>LINE連携・来店予約</h4>
+          <p>問い合わせがあると自動でLINE通知。来店予約もLINEから完結。リマインドも自動送信。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item__icon">⚙️</div>
+        <div>
+          <h4>管理者ダッシュボード</h4>
+          <p>物件登録・編集・公開設定・問い合わせ管理を非エンジニアでも操作できるUI で構築。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item__icon">❤️</div>
+        <div>
+          <h4>お気に入り・比較機能</h4>
+          <p>気になった物件をブックマークし、複数物件をスペック比較できる機能。再訪問を促進。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-item__icon">📊</div>
+        <div>
+          <h4>アクセス解析連携</h4>
+          <p>Google Analytics 4・Search Console を設定し、どの物件が見られているかを可視化。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>技術スタック</h2>
+    <p>表示速度・SEO・保守性を重視した技術選定を行っています。</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <span class="tech-card__label">Frontend</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">Next.js 14</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card__label">Backend</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Prisma</span>
+          <span class="tech-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card__label">Infrastructure</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">Vercel</span>
+          <span class="tech-tag">AWS RDS</span>
+          <span class="tech-tag">Cloudinary</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card__label">外部連携</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">LINE API</span>
+          <span class="tech-tag">Google Maps</span>
+          <span class="tech-tag">GA4</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card__label">SEO対策</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">SSG/SSR</span>
+          <span class="tech-tag">構造化データ</span>
+          <span class="tech-tag">OGP設定</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card__label">CMS・管理</span>
+        <div class="tech-card__items">
+          <span class="tech-tag">カスタム管理画面</span>
+          <span class="tech-tag">権限管理</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#888;">※ Next.js の SSG/SSR を組み合わせることで、SEOに強く表示速度の速いサイトを実現します。Core Web Vitals 全項目グリーンを目標に設計しています。</p>
+  </div>
+
+  <div class="art-section">
+    <h2>開発スケジュール</h2>
+    <ul>
+      <li><strong>2026年3月：</strong>要件定義・ワイヤーフレーム作成・DB設計</li>
+      <li><strong>2026年4月：</strong>フロントエンド・バックエンド開発（物件検索・詳細ページ）</li>
+      <li><strong>2026年5月：</strong>管理画面開発・LINE連携・テスト</li>
+      <li><strong>2026年6月：</strong>納品・本番公開・SEO設定・運用引き継ぎ</li>
+    </ul>
+  </div>
+
+  <div class="art-section">
+    <h2>このような課題をお持ちの方へ</h2>
+    <p>今回の案件のように、以下のような課題をお持ちの企業様からのご相談を承っています。</p>
+    <ul>
+      <li>サイトはあるが集客に全くつながっていない</li>
+      <li>スマホ非対応・表示が遅いなど技術的に古くなっている</li>
+      <li>大手の制作会社の見積もりが高すぎて相談できていない</li>
+      <li>物件・商品情報を自分たちで更新できる仕組みが欲しい</li>
+      <li>LINEやSNSと連携した問い合わせ導線を作りたい</li>
+    </ul>
+    <div class="art-box">
+      <p><strong>Provydalでは初回の要件整理・お見積もりを無料で行っています。</strong>「こんなものを作りたいが、費用感がわからない」という段階からご相談ください。</p>
+    </div>
+  </div>
+
+  <div class="art-cta">
+    <h3>Webシステム開発のご相談はこちら</h3>
+    <p>「古いサイトを作り直したい」「集客につながるWebを作りたい」<br>要件が固まっていなくても大丈夫です。まずはお気軽にどうぞ。</p>
+    <a href="/contact/">無料相談はこちら<span>Contact Us — 見積もり無料</span></a>
+  </div>
+
+  <div class="art-related">
+    <h3>Related</h3>
+    <div class="art-related-grid">
+      <a href="/news/ai-service/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">生成AI導入支援サービスの提供を本格開始</span>
+      </a>
+      <a href="/service/dev/" class="art-related-card">
+        <span class="art-related-card__tag">Service</span>
+        <span class="art-related-card__title">受託開発 / Web制作サービスの詳細はこちら</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

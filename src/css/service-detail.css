@@ -1,0 +1,247 @@
+
+/* ===== Service Detail Pages ===== */
+.sd-hero {
+  padding: 160px 48px 100px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.sd-hero::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+.sd-hero__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.sd-back {
+  display: inline-block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 40px;
+  transition: color 0.2s;
+}
+.sd-back:hover { color: #fff; }
+.sd-num {
+  font-family: var(--font);
+  font-size: clamp(100px, 15vw, 180px);
+  font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  margin-bottom: -20px;
+}
+.sd-tag {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.sd-title {
+  font-family: var(--font);
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+.sd-lead {
+  font-size: 18px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.72);
+  max-width: 660px;
+}
+
+/* ── Problem Section ── */
+.sd-problem {
+  padding: 120px 48px;
+  background: var(--white);
+}
+.sd-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sd-eyebrow {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.sd-h2 {
+  font-family: var(--font);
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 56px;
+}
+.sd-problems-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.sd-problem-card {
+  background: var(--gray);
+  padding: 40px 36px;
+  transition: background 0.2s;
+}
+.sd-problem-card:hover { background: #e4eaf8; }
+.sd-problem-card__icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.sd-problem-card h3 {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.sd-problem-card p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #555;
+}
+
+/* ── Solution Section ── */
+.sd-solution {
+  padding: 120px 48px;
+  background: var(--navy);
+}
+.sd-solution .sd-eyebrow { color: rgba(255,255,255,0.4); }
+.sd-solution .sd-h2 { color: #fff; }
+.sd-body {
+  font-size: 16px;
+  line-height: 2;
+  color: rgba(255,255,255,0.7);
+  max-width: 760px;
+  margin-bottom: 60px;
+}
+.sd-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.sd-step {
+  background: rgba(255,255,255,0.07);
+  padding: 40px 36px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s;
+}
+.sd-step:hover { background: rgba(255,255,255,0.11); }
+.sd-step__num {
+  font-family: var(--font);
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.sd-step h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.sd-step p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.62);
+}
+
+/* ── Scope Section ── */
+.sd-scope {
+  padding: 120px 48px;
+  background: var(--gray);
+}
+.sd-scope-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.sd-scope-item {
+  background: var(--white);
+  padding: 40px 36px;
+  border-bottom: 3px solid var(--navy);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sd-scope-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(26,58,140,0.1);
+}
+.sd-scope-item span {
+  font-family: var(--font);
+  font-size: 11px;
+  color: rgba(26,58,140,0.3);
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 16px;
+}
+.sd-scope-item h3 {
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.sd-scope-item p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #555;
+}
+
+/* ── CTA Section ── */
+.sd-cta {
+  padding: 160px 48px;
+  background: var(--white);
+  text-align: center;
+}
+.sd-cta__inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.sd-cta h2 {
+  font-family: var(--font);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+.sd-cta p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 48px;
+}
+.sd-cta .btn-fill {
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media(max-width:768px) {
+  .sd-hero { padding: 120px 24px 72px; }
+  .sd-problem, .sd-solution, .sd-scope { padding: 80px 24px; }
+  .sd-cta { padding: 100px 24px; }
+  .sd-problems-grid, .sd-steps, .sd-scope-grid { grid-template-columns: 1fr; }
+  .sd-num { font-size: 80px; }
+}

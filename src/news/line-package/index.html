@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LINE連携・業務自動化パッケージの提供を開始 | Provydal News</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;--green:#06C755;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+
+.art-header{background:var(--navy);padding:140px 48px 80px;}
+.art-header__inner{max-width:800px;margin:0 auto;}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;transition:color .2s;}
+.art-back:hover{color:#fff;}
+.art-tag{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:3px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.art-title{font-family:var(--font);font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;}
+.art-meta{display:flex;gap:24px;align-items:center;}
+.art-meta__date,.art-meta__by{font-size:13px;color:rgba(255,255,255,.45);}
+
+.art-eyecatch{width:100%;aspect-ratio:16/6;background:linear-gradient(135deg,#e8f5e9,#f0fff4);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.art-eyecatch__icon{font-size:clamp(60px,10vw,120px);opacity:.15;user-select:none;position:relative;z-index:1;}
+.art-eyecatch__text{position:absolute;z-index:2;text-align:center;}
+.art-eyecatch__text h2{font-family:var(--font);font-size:clamp(16px,3vw,26px);font-weight:700;color:#1b5e20;opacity:.85;margin-bottom:8px;}
+.art-eyecatch__text p{font-size:12px;color:#2e7d32;opacity:.6;}
+
+.art-body-wrap{max-width:800px;margin:0 auto;padding:64px 48px 80px;}
+.art-lead{font-size:17px;line-height:2;color:#333;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #e8ecf4;}
+
+.art-section{margin-bottom:52px;}
+.art-section h2{font-family:var(--font);font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--navy);margin-bottom:20px;padding-left:16px;border-left:4px solid var(--navy);}
+.art-section h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.art-section p{font-size:15px;line-height:2;color:#333;margin-bottom:16px;}
+.art-section ul{margin:0 0 16px 1.5em;}
+.art-section ul li{font-size:15px;line-height:1.9;color:#333;margin-bottom:8px;}
+
+.art-box{background:#f0f4ff;border-left:4px solid var(--navy);padding:24px 28px;margin:24px 0;border-radius:0 4px 4px 0;}
+.art-box p{font-size:15px;line-height:1.9;color:#333;margin:0;}
+.art-box strong{color:var(--navy);}
+
+/* 数字インパクト */
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:28px 0;}
+.impact-card{background:#f7f8fc;padding:28px 20px;text-align:center;}
+.impact-card__num{font-family:var(--font);font-size:clamp(32px,5vw,48px);font-weight:700;color:var(--navy);line-height:1;}
+.impact-card__unit{font-size:16px;font-weight:700;color:var(--navy);}
+.impact-card__label{font-size:12px;color:#888;margin-top:8px;line-height:1.5;}
+
+/* ビフォーアフター */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:24px 0;}
+.ba-col{padding:28px;}
+.ba-col--before{background:#fff5f5;}
+.ba-col--after{background:#f0fff4;}
+.ba-col__label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:block;}
+.ba-col--before .ba-col__label{color:#e05252;}
+.ba-col--after .ba-col__label{color:#2e7d32;}
+.ba-col h4{font-size:15px;font-weight:700;color:#333;margin-bottom:10px;}
+.ba-col ul{margin-left:1.2em;}
+.ba-col ul li{font-size:14px;line-height:1.8;color:#444;margin-bottom:6px;}
+
+/* 事例カード */
+.case-card{border:1.5px solid #e0e8f4;border-radius:6px;overflow:hidden;margin:24px 0;}
+.case-card__head{background:var(--navy);padding:16px 24px;display:flex;align-items:center;gap:12px;}
+.case-card__industry{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:2px 10px;border-radius:20px;}
+.case-card__name{font-family:var(--font);font-size:15px;font-weight:700;color:#fff;}
+.case-card__body{padding:24px;}
+.case-card__result{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;}
+.case-card__stat{background:#f0f4ff;padding:16px;text-align:center;border-radius:4px;}
+.case-card__stat-num{font-family:var(--font);font-size:28px;font-weight:700;color:var(--navy);line-height:1;}
+.case-card__stat-label{font-size:11px;color:#888;margin-top:4px;}
+
+/* LINE自動化フロー */
+.flow{display:flex;flex-direction:column;gap:2px;margin:20px 0;}
+.flow-step{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:#f7f8fc;}
+.flow-step__num{font-family:var(--font);font-size:11px;color:var(--navy);opacity:.35;letter-spacing:2px;flex-shrink:0;padding-top:2px;}
+.flow-step__icon{font-size:20px;flex-shrink:0;}
+.flow-step h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.flow-step p{font-size:13px;line-height:1.7;color:#555;}
+.flow-arrow{text-align:center;font-size:20px;color:#ccd5f0;padding:4px 0;}
+
+.art-cta{background:var(--navy);padding:48px;border-radius:6px;text-align:center;margin-top:64px;}
+.art-cta h3{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.8;}
+.art-cta a{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:16px 48px;transition:opacity .2s;}
+.art-cta a:hover{opacity:.88;}
+.art-cta a span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+.art-related{margin-top:64px;padding-top:40px;border-top:1px solid #e8ecf4;}
+.art-related h3{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:20px;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-related-card{display:block;padding:20px 24px;background:#f7f8fc;border-left:3px solid var(--navy);transition:background .2s;}
+.art-related-card:hover{background:#eef1fa;}
+.art-related-card__tag{font-size:10px;color:var(--navy);opacity:.45;margin-bottom:6px;display:block;}
+.art-related-card__title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5;}
+
+@media(max-width:768px){
+  .art-header{padding:120px 24px 60px;}
+  .art-body-wrap{padding:48px 20px 60px;}
+  .ba-grid,.art-related-grid,.impact-grid{grid-template-columns:1fr;}
+  .case-card__result{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="art-header">
+  <div class="art-header__inner">
+    <a href="/news/" class="art-back">← ニュース一覧へ戻る</a>
+    <p class="art-tag">お知らせ</p>
+    <h1 class="art-title">「問い合わせ対応に追われて本来の仕事ができない」<br>LINE連携・業務自動化パッケージの提供を開始</h1>
+    <div class="art-meta">
+      <span class="art-meta__date">2026年2月28日</span>
+      <span class="art-meta__by">Provydal 広報</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-eyecatch">
+  <div class="art-eyecatch__icon">💬</div>
+  <div class="art-eyecatch__text">
+    <h2>LINE連携・業務自動化パッケージ</h2>
+    <p>問い合わせ対応・予約管理・フォローアップを仕組みで解決</p>
+  </div>
+</div>
+
+<div class="art-body-wrap">
+  <p class="art-lead">株式会社プロバイダル（Provydal）は2026年2月より、LINE公式アカウントを活用した業務自動化パッケージの提供を開始しました。「同じ問い合わせへの返信」「予約確認のメール」「発送通知」——これらを自動化し、経営者・スタッフが本来の仕事に集中できる環境を作ります。業種を問わず、全国の中小企業・個人事業主様を対象としています。</p>
+
+  <div class="art-section">
+    <h2>「問い合わせ対応」が経営の足を引っ張っている</h2>
+    <p>規模の小さい会社ほど、こんな状況に陥りがちです。</p>
+    <div class="art-box">
+      <p>「営業・制作・接客をしながら、LINEやメールの返信も自分でやっている。気づいたら1日の半分が返信作業で終わっている」</p>
+    </div>
+    <p>中小企業の経営者や少人数チームにとって、定型的な問い合わせ対応は「やらなければいけないけど、誰かに任せられない」業務の代表格です。</p>
+    <p>しかし実態を見ると、日々届く問い合わせの大半は同じ内容の繰り返しです。<strong>「営業時間は何時ですか？」「在庫はありますか？」「キャンセルはできますか？」——これらはすべて、仕組みがあれば自動で答えられます。</strong></p>
+    <p>Provydalは、LINEという日本人に最も馴染みのあるプラットフォームを活用して、こうした定型業務を自動化します。</p>
+  </div>
+
+  <div class="art-section">
+    <h2>導入企業の実績数値</h2>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-card__num">73<span class="impact-card__unit">%</span></div>
+        <p class="impact-card__label">問い合わせの自動応答率<br>（導入企業平均）</p>
+      </div>
+      <div class="impact-card">
+        <div class="impact-card__num">週<span class="impact-card__unit"> </span>15<span class="impact-card__unit">h</span></div>
+        <p class="impact-card__label">削減できた対応工数<br>（5名以下の事業者平均）</p>
+      </div>
+      <div class="impact-card">
+        <div class="impact-card__num">+<span class="impact-card__unit"> </span>11<span class="impact-card__unit">%</span></div>
+        <p class="impact-card__label">カゴ落ちリマインドによる<br>購入完了率の向上（EC事業者）</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>具体的な効果——EC事業者での導入事例</h2>
+
+    <div class="case-card">
+      <div class="case-card__head">
+        <span class="case-card__industry">EC / アパレル通販</span>
+        <span class="case-card__name">従業員5名・月商800万円規模</span>
+      </div>
+      <div class="case-card__body">
+        <div class="ba-grid">
+          <div class="ba-col ba-col--before">
+            <span class="ba-col__label">Before</span>
+            <h4>対応に追われる毎日</h4>
+            <ul>
+              <li>1日30〜40件の問い合わせをすべて手動返信</li>
+              <li>「発送はいつですか？」が全体の4割以上</li>
+              <li>土日・深夜の問い合わせは翌営業日まで放置</li>
+              <li>カゴ落ちした顧客へのフォローができていない</li>
+            </ul>
+          </div>
+          <div class="ba-col ba-col--after">
+            <span class="ba-col__label">After（導入3ヶ月）</span>
+            <h4>仕組みが動き続ける状態に</h4>
+            <ul>
+              <li>定型問い合わせの75%をLINEボットが自動応答</li>
+              <li>発送通知・到着予定を自動でLINE送信</li>
+              <li>24時間365日、即時返信が実現</li>
+              <li>カゴ落ちから24時間以内に自動リマインド送信</li>
+            </ul>
+          </div>
+        </div>
+        <div class="case-card__result">
+          <div class="case-card__stat">
+            <div class="case-card__stat-num">週18h</div>
+            <p class="case-card__stat-label">問い合わせ対応工数を削減</p>
+          </div>
+          <div class="case-card__stat">
+            <div class="case-card__stat-num">+11%</div>
+            <p class="case-card__stat-label">カゴ落ちリマインドで購入完了率が向上</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card__head">
+        <span class="case-card__industry">飲食業 / テイクアウト専門店</span>
+        <span class="case-card__name">従業員3名・個人経営</span>
+      </div>
+      <div class="case-card__body">
+        <div class="ba-grid">
+          <div class="ba-col ba-col--before">
+            <span class="ba-col__label">Before</span>
+            <h4>電話・LINEを調理しながら対応</h4>
+            <ul>
+              <li>「今日は営業していますか？」「何時に取りに行けますか？」への返信に追われる</li>
+              <li>調理中に着信を取れず、折り返しできないまま機会損失</li>
+              <li>予約の二重受付・伝達ミスが月に数回発生</li>
+            </ul>
+          </div>
+          <div class="ba-col ba-col--after">
+            <span class="ba-col__label">After（導入2ヶ月）</span>
+            <h4>厨房に集中できる環境に</h4>
+            <ul>
+              <li>営業時間・メニュー・混雑状況をLINEが自動回答</li>
+              <li>テイクアウト予約をLINEから受付・確認まで自動化</li>
+              <li>予約リマインドを前日に自動送信しノーショウ激減</li>
+            </ul>
+          </div>
+        </div>
+        <div class="case-card__result">
+          <div class="case-card__stat">
+            <div class="case-card__stat-num">日12件</div>
+            <p class="case-card__stat-label">定型問い合わせへの手動返信をゼロに</p>
+          </div>
+          <div class="case-card__stat">
+            <div class="case-card__stat-num">-80%</div>
+            <p class="case-card__stat-label">ノーショウ・予約キャンセルが大幅減少</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>LINEとShopify・BASE等ECとの連携方法</h2>
+    <p>ECサイトとLINEを連携することで、以下のフローが完全自動化されます。</p>
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-step__num">01</span>
+        <div class="flow-step__icon">🛒</div>
+        <div>
+          <h4>注文完了</h4>
+          <p>Shopify / BASE / カラーミーショップで注文が入ると、自動でLINEに注文確認メッセージを送信。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-step__num">02</span>
+        <div class="flow-step__icon">📦</div>
+        <div>
+          <h4>発送通知</h4>
+          <p>商品を発送したタイミングで、追跡番号・到着予定日をLINEで自動送信。「発送はいつ？」の問い合わせがなくなる。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-step__num">03</span>
+        <div class="flow-step__icon">⏰</div>
+        <div>
+          <h4>カゴ落ちリマインド</h4>
+          <p>カートに商品を入れたまま24時間購入していない顧客に、自動でフォローメッセージを送信。開封率70%超のLINEだから届く。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-step__num">04</span>
+        <div class="flow-step__icon">💌</div>
+        <div>
+          <h4>購入後フォローアップ</h4>
+          <p>購入から7日後に使い方ガイド・30日後にリピート促進メッセージを自動送信。LTVの向上につなげる。</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#888;margin-top:12px;">※ Shopify・BASE・カラーミーショップ・STORES等、主要ECプラットフォームに対応しています。独自システムとのAPI連携も別途ご相談可能です。</p>
+  </div>
+
+  <div class="art-section">
+    <h2>こんな業種・状況にお勧めします</h2>
+    <ul>
+      <li><strong>EC・通販：</strong>注文対応・発送通知・カゴ落ち・レビュー依頼の自動化</li>
+      <li><strong>飲食・テイクアウト：</strong>営業時間の案内・テイクアウト予約・リマインドの自動化</li>
+      <li><strong>美容・サロン：</strong>予約受付・リマインド・キャンセル待ちの自動化</li>
+      <li><strong>不動産・士業：</strong>初回問い合わせの自動受付・ヒアリング・担当者への通知</li>
+      <li><strong>全業種共通：</strong>「営業時間は？」「料金はいくら？」などの定型質問の自動応答</li>
+    </ul>
+    <div class="art-box">
+      <p><strong>既存のLINE公式アカウントに追加するだけでOKです。</strong>新しいアカウントを作り直す必要はありません。現在のフォロワーにそのまま展開できます。初回ヒアリング・自動化できる業務の洗い出しは無料で行います。</p>
+    </div>
+  </div>
+
+  <div class="art-cta">
+    <h3>まず「自動化できる業務」を<br>一緒に整理しましょう</h3>
+    <p>どの返信作業・予約管理が自動化できるか、<br>30分のヒアリングで無料で整理します。</p>
+    <a href="/contact/">無料相談はこちら<span>Contact Us — 初回ヒアリング無料</span></a>
+  </div>
+
+  <div class="art-related">
+    <h3>Related</h3>
+    <div class="art-related-grid">
+      <a href="/news/ai-service/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">生成AI導入支援サービスの提供を本格開始</span>
+      </a>
+      <a href="/service/line/" class="art-related-card">
+        <span class="art-related-card__tag">Service</span>
+        <span class="art-related-card__title">LINE連携 / 業務自動化サービスの詳細はこちら</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

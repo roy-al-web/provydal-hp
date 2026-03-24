@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>生成AI導入支援サービスの提供を本格開始 | Provydal News</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+
+.art-header{background:var(--navy);padding:140px 48px 80px;}
+.art-header__inner{max-width:800px;margin:0 auto;}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;transition:color .2s;}
+.art-back:hover{color:#fff;}
+.art-tag{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:3px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.art-title{font-family:var(--font);font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;}
+.art-meta{display:flex;gap:24px;align-items:center;}
+.art-meta__date{font-size:13px;color:rgba(255,255,255,.45);}
+.art-meta__by{font-size:13px;color:rgba(255,255,255,.45);}
+
+.art-eyecatch{width:100%;aspect-ratio:16/6;background:linear-gradient(135deg,#1A3A8C 0%,#2d52b0 50%,#1A3A8C 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.art-eyecatch__icon{font-size:clamp(60px,10vw,120px);opacity:.12;user-select:none;}
+.art-eyecatch__text{position:absolute;text-align:center;}
+.art-eyecatch__text h2{font-family:var(--font);font-size:clamp(18px,3vw,28px);font-weight:700;color:rgba(255,255,255,.9);margin-bottom:8px;}
+.art-eyecatch__text p{font-size:13px;color:rgba(255,255,255,.55);}
+
+.art-body-wrap{max-width:800px;margin:0 auto;padding:64px 48px 80px;}
+
+.art-lead{font-size:17px;line-height:2;color:#333;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #e8ecf4;}
+
+.art-section{margin-bottom:56px;}
+.art-section h2{font-family:var(--font);font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--navy);margin-bottom:20px;padding-left:16px;border-left:4px solid var(--navy);}
+.art-section h3{font-family:var(--font);font-size:18px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.art-section p{font-size:15px;line-height:2;color:#333;margin-bottom:16px;}
+.art-section ul{margin:0 0 16px 1.5em;}
+.art-section ul li{font-size:15px;line-height:1.9;color:#333;margin-bottom:8px;}
+
+.art-box{background:#f0f4ff;border-left:4px solid var(--navy);padding:24px 28px;margin:28px 0;border-radius:0 4px 4px 0;}
+.art-box p{font-size:15px;line-height:1.9;color:#333;margin:0;}
+.art-box strong{color:var(--navy);}
+
+.art-case{background:#f7f8fc;border-radius:6px;padding:28px 32px;margin:28px 0;}
+.art-case__label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:.45;margin-bottom:12px;}
+.art-case__title{font-family:var(--font);font-size:17px;font-weight:700;color:var(--navy);margin-bottom:16px;}
+.art-case__grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-case__col h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#999;margin-bottom:8px;}
+.art-case__col p{font-size:14px;line-height:1.8;color:#444;}
+.art-case__result{margin-top:16px;padding-top:16px;border-top:1px solid #e0e6f4;font-size:14px;color:var(--navy);font-weight:600;}
+.art-case__result span{font-size:20px;font-weight:700;margin-right:4px;}
+
+.art-fail{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:20px 0;}
+.art-fail__item{padding:20px 24px;background:#f7f8fc;}
+.art-fail__item--bad{background:#fff5f5;}
+.art-fail__item--bad .art-fail__num{color:#e05252;}
+.art-fail__num{font-family:var(--font);font-size:11px;letter-spacing:1px;color:var(--navy);opacity:.4;margin-bottom:8px;}
+.art-fail__item h4{font-size:14px;font-weight:700;color:#333;margin-bottom:6px;line-height:1.4;}
+.art-fail__item p{font-size:13px;line-height:1.8;color:#666;}
+
+.art-steps{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:20px 0;}
+.art-step{background:#f7f8fc;padding:24px 28px;}
+.art-step__num{font-family:var(--font);font-size:11px;color:var(--navy);opacity:.35;letter-spacing:2px;margin-bottom:10px;}
+.art-step h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.art-step p{font-size:13px;line-height:1.8;color:#555;}
+
+.art-cta{background:var(--navy);padding:48px;border-radius:6px;text-align:center;margin-top:64px;}
+.art-cta h3{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.8;}
+.art-cta a{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:16px 48px;transition:opacity .2s;}
+.art-cta a:hover{opacity:.88;}
+.art-cta a span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+.art-related{margin-top:64px;padding-top:40px;border-top:1px solid #e8ecf4;}
+.art-related h3{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:20px;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-related-card{display:block;padding:20px 24px;background:#f7f8fc;border-left:3px solid var(--navy);transition:background .2s;}
+.art-related-card:hover{background:#eef1fa;}
+.art-related-card__tag{font-size:10px;color:var(--navy);opacity:.45;margin-bottom:6px;display:block;}
+.art-related-card__title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5;}
+
+@media(max-width:768px){
+  .art-header{padding:120px 24px 60px;}
+  .art-body-wrap{padding:48px 20px 60px;}
+  .art-case__grid,.art-fail,.art-steps,.art-related-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="art-header">
+  <div class="art-header__inner">
+    <a href="/news/" class="art-back">← ニュース一覧へ戻る</a>
+    <p class="art-tag">お知らせ</p>
+    <h1 class="art-title">生成AI導入支援サービスの提供を本格開始——<br>「何から始めればいいかわからない」を解決します</h1>
+    <div class="art-meta">
+      <span class="art-meta__date">2026年3月20日</span>
+      <span class="art-meta__by">Provydal 広報</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-eyecatch">
+  <div class="art-eyecatch__icon">🤖</div>
+  <div class="art-eyecatch__text">
+    <h2>AI導入支援パッケージ、提供開始</h2>
+    <p>業務分析から定着支援まで、一気通貫で伴走します</p>
+  </div>
+</div>
+
+<div class="art-body-wrap">
+  <p class="art-lead">株式会社プロバイダル（Provydal、東京都）は2026年3月より、中小企業・スタートアップ向けの生成AI導入支援サービスの提供を本格開始しました。「AIを使いたいが何から始めればいいかわからない」という企業が、まず最初に相談できる窓口として設計しています。初回ヒアリングは無料で実施しています。</p>
+
+  <div class="art-section">
+    <h2>背景——AIへの関心は高いが「使いこなせていない」が現実</h2>
+    <p>ChatGPTをはじめとする生成AIへの関心は、ここ2年で急速に高まっています。しかし多くの中小企業では、こんな状況が続いています。</p>
+    <div class="art-box">
+      <p>「ChatGPTのアカウントは作った。研修も1回やった。でも、現場では誰も使っていない」</p>
+    </div>
+    <p>経営層の関心は高くても、現場への定着は難しい。ツールを入れるだけでは何も変わらない——これが多くの企業で起きているAI導入の現実です。</p>
+    <p>Provydalは「ツールを入れること」ではなく、「業務が変わること」を目的に、AI導入の設計から定着まで一気通貫で支援します。</p>
+  </div>
+
+  <div class="art-section">
+    <h2>AI導入で失敗する3つのパターン</h2>
+    <p>これまでの支援実績から、AI導入が定着しないケースには共通したパターンがあります。</p>
+    <div class="art-fail">
+      <div class="art-fail__item art-fail__item--bad">
+        <div class="art-fail__num">失敗パターン 01</div>
+        <h4>「とりあえずツールを入れる」から始める</h4>
+        <p>どの業務に使うかを決めないままツールを導入。使い方がわからず、結局誰も使わなくなる。</p>
+      </div>
+      <div class="art-fail__item art-fail__item--bad">
+        <div class="art-fail__num">失敗パターン 02</div>
+        <h4>研修を1回やって終わりにする</h4>
+        <p>導入研修をやっただけで、日常業務への組み込みができていない。1ヶ月後には元の業務フローに戻っている。</p>
+      </div>
+      <div class="art-fail__item art-fail__item--bad">
+        <div class="art-fail__num">失敗パターン 03</div>
+        <h4>全社一斉導入を試みる</h4>
+        <p>いきなり全社員を対象にしようとして、リテラシーの差が大きく混乱。一部の社員しか使いこなせず頓挫する。</p>
+      </div>
+      <div class="art-fail__item">
+        <div class="art-fail__num">Provydalの解決策</div>
+        <h4>業務フローから設計して、小さく始める</h4>
+        <p>まず「どの業務に使うか」を業務分析で特定。最も効果の出やすい1業務から始め、成功体験を積んで広げていきます。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>具体的な活用事例</h2>
+    <p>Provydalが支援した企業での導入事例をご紹介します（一部）。</p>
+
+    <div class="art-case">
+      <p class="art-case__label">Case 01 — 営業会社 / 従業員15名</p>
+      <p class="art-case__title">週3回の営業会議の議事録作成を完全自動化</p>
+      <div class="art-case__grid">
+        <div class="art-case__col">
+          <h4>Before</h4>
+          <p>会議後に担当者が手作業で議事録を作成。1回あたり45〜60分かかり、翌日送付が常態化。「議事録を書く時間がもったいない」という声が多かった。</p>
+        </div>
+        <div class="art-case__col">
+          <h4>After</h4>
+          <p>会議音声をAIが自動で要点抽出・構造化。会議終了後10分以内に議事録が完成し、その場で共有できるように。担当者の作業は最終確認のみ。</p>
+        </div>
+      </div>
+      <p class="art-case__result"><span>月22時間</span>の議事録作成業務を削減（担当者換算）</p>
+    </div>
+
+    <div class="art-case">
+      <p class="art-case__label">Case 02 — EC事業者 / 従業員8名</p>
+      <p class="art-case__title">カスタマーサポートの定型対応をAIに移管</p>
+      <div class="art-case__grid">
+        <div class="art-case__col">
+          <h4>Before</h4>
+          <p>「注文できましたか？」「発送はいつですか？」などの問い合わせが1日30〜40件。2名のスタッフが対応に追われ、他の業務が圧迫されていた。</p>
+        </div>
+        <div class="art-case__col">
+          <h4>After</h4>
+          <p>よくある質問の約75%をAIチャットボットが自動回答。残り25%の複雑な問い合わせのみ人が対応。スタッフは商品開発・マーケティングに集中できるように。</p>
+        </div>
+      </div>
+      <p class="art-case__result">問い合わせ対応工数を<span>週18時間</span>削減、顧客満足度は維持</p>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>Provydalのサービス内容と進め方</h2>
+    <p>「何から始めればいいかわからない」という状態でも大丈夫です。業務の棚卸しから一緒に始めます。</p>
+    <div class="art-steps">
+      <div class="art-step">
+        <div class="art-step__num">PHASE 01</div>
+        <h4>業務分析・活用設計（無料）</h4>
+        <p>現状の業務フローをヒアリングし、AIで効率化できる箇所を特定。費用対効果の高い順に優先順位をつけた導入ロードマップを作成します。</p>
+      </div>
+      <div class="art-step">
+        <div class="art-step__num">PHASE 02</div>
+        <h4>PoC・プロトタイプ開発</h4>
+        <p>まず小さく試す。ChatGPT APIを活用したプロトタイプを素早く構築し、実際の業務で効果があるかを検証。失敗コストを最小化します。</p>
+      </div>
+      <div class="art-step">
+        <div class="art-step__num">PHASE 03</div>
+        <h4>システム構築・既存ツール連携</h4>
+        <p>実業務に組み込める形でシステム化。Slack・Notion・Google Workspace・社内DBなど既存ツールとの連携も対応します。</p>
+      </div>
+      <div class="art-step">
+        <div class="art-step__num">PHASE 04</div>
+        <h4>研修・展開・定着支援</h4>
+        <p>社内研修・マニュアル作成・定着フォローまで一気通貫で支援。現場が自走できる状態になるまで寄り添います。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>こんな企業にご相談いただいています</h2>
+    <ul>
+      <li>ChatGPTを触ったことはあるが、業務に定着させられていない</li>
+      <li>どの業務にAIを使えばいいか整理できていない</li>
+      <li>社内にITエンジニアがいないが、AIを活用したい</li>
+      <li>コストをかけずに、まず小さく試してみたい</li>
+      <li>研修をやったが、現場に浸透していない</li>
+    </ul>
+    <div class="art-box">
+      <p><strong>「まずは話を聞いてみたい」だけでも大丈夫です。</strong>初回ヒアリング（オンライン・30分）は無料で実施しています。業務の棚卸しから一緒に始めますので、資料や仕様書は不要です。</p>
+    </div>
+  </div>
+
+  <div class="art-cta">
+    <h3>AI導入、まずは無料相談から</h3>
+    <p>「何から始めればいいかわからない」という状態でOKです。<br>業務フローを教えていただくだけで、ロードマップを一緒に作ります。</p>
+    <a href="/contact/">無料相談はこちら<span>Contact Us — 初回ヒアリング無料</span></a>
+  </div>
+
+  <div class="art-related">
+    <h3>Related</h3>
+    <div class="art-related-grid">
+      <a href="/news/line-package/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">LINE連携・業務自動化パッケージの提供を開始</span>
+      </a>
+      <a href="/service/ai/" class="art-related-card">
+        <span class="art-related-card__tag">Service</span>
+        <span class="art-related-card__title">AI導入支援サービスの詳細・料金はこちら</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

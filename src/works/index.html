@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>事例・実績 | Provydal</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;}
+a{text-decoration:none;color:inherit;}
+
+.wk-header{padding:140px 64px 72px;border-bottom:1px solid #e8ecf4;background:#fff;}
+.wk-header__inner{max-width:1200px;margin:0 auto;}
+.wk-eyebrow{font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:14px;}
+.wk-title{font-family:var(--font);font-size:min(72px,7vw);font-weight:700;color:var(--navy);line-height:1.05;letter-spacing:-2px;}
+
+.wk-grid{padding:60px 64px 120px;background:#fff;}
+.wk-grid__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.wk-card{position:relative;overflow:hidden;cursor:pointer;background:#e8ecf4;aspect-ratio:4/3;}
+.wk-card--wide{grid-column:span 2;}
+.wk-card__demo{position:absolute;inset:0;width:100%;height:100%;}
+.wk-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,18,60,0.88) 0%,rgba(8,18,60,0.1) 50%,transparent 100%);opacity:0;transition:opacity 0.3s;}
+.wk-card:hover .wk-card__overlay{opacity:1;}
+.wk-card__body{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;transform:translateY(12px);opacity:0;transition:all 0.3s;}
+.wk-card:hover .wk-card__body{transform:translateY(0);opacity:1;}
+.wk-card__tag{font-size:10px;border:1px solid rgba(255,255,255,0.5);color:rgba(255,255,255,0.9);padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.wk-card__title{font-family:var(--font);font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.wk-card__client{font-size:11px;color:rgba(255,255,255,0.6);}
+
+.wk-cta{background:var(--navy);padding:80px 64px;}
+.wk-cta__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.wk-cta p{font-family:var(--font);font-size:min(26px,3vw);font-weight:700;color:#fff;}
+.btn-cta{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:14px;font-weight:700;padding:16px 36px;white-space:nowrap;}
+.btn-cta span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+@media(max-width:768px){
+  .wk-header{padding:120px 24px 48px;}
+  .wk-grid{padding:40px 24px 80px;}
+  .wk-grid__inner{grid-template-columns:1fr 1fr;}
+  .wk-card--wide{grid-column:span 1;}
+  .wk-card__body{opacity:1;transform:none;}
+  .wk-card__overlay{opacity:1;}
+  .wk-cta{padding:60px 24px;}
+  .wk-cta__inner{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<div class="wk-header">
+  <div class="wk-header__inner">
+    <p class="wk-eyebrow">Our Works</p>
+    <h1 class="wk-title">事例・実績</h1>
+  </div>
+</div>
+
+<div class="wk-grid">
+  <div class="wk-grid__inner wk-grid__inner--real">
+    <a href="#" class="wk-card wk-card--photo">
+      <div class="wk-card__frame">
+        <img src="/images/works/real-estate-platform.png" alt="動画不動産プラットフォームの開発事例" class="wk-card__image">
+      </div>
+      <div class="wk-card__overlay"></div>
+      <div class="wk-card__body">
+        <span class="wk-card__tag">不動産 / 動画プラットフォーム</span>
+        <div class="wk-card__title">動画不動産プラットフォーム開発</div>
+        <div class="wk-card__client">株式会社 R</div>
+      </div>
+    </a>
+
+    <a href="#" class="wk-card wk-card--photo">
+      <div class="wk-card__frame">
+        <img src="/images/works/line-ec-system.png" alt="EC向けLINE連携システムの開発事例" class="wk-card__image">
+      </div>
+      <div class="wk-card__overlay"></div>
+      <div class="wk-card__body">
+        <span class="wk-card__tag">LINE連携 / EC自動化</span>
+        <div class="wk-card__title">EC向けLINE連携システム</div>
+        <div class="wk-card__client">株式会社 N</div>
+      </div>
+    </a>
+
+    <a href="#" class="wk-card wk-card--photo">
+      <div class="wk-card__frame">
+        <img src="/images/works/ai-minutes-system.png" alt="録音議事録自動化システムの開発事例" class="wk-card__image">
+      </div>
+      <div class="wk-card__overlay"></div>
+      <div class="wk-card__body">
+        <span class="wk-card__tag">AI導入 / 議事録自動化</span>
+        <div class="wk-card__title">録音・議事録自動化システム</div>
+        <div class="wk-card__client">株式会社 M</div>
+      </div>
+    </a>
+
+    <a href="#" class="wk-card wk-card--photo">
+      <div class="wk-card__frame">
+        <img src="/images/works/corporate-site.png" alt="コーポレートサイト制作の事例" class="wk-card__image">
+      </div>
+      <div class="wk-card__overlay"></div>
+      <div class="wk-card__body">
+        <span class="wk-card__tag">Web制作 / コーポレートサイト</span>
+        <div class="wk-card__title">コーポレートサイト制作</div>
+        <div class="wk-card__client">株式会社 U</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+  <script type="module" src="/js/works-carousel.js"></script>
+</body>
+</html>

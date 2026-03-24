@@ -1,0 +1,79 @@
+export function initHero(container) {
+  if (!container) return
+  container.style.cssText = 'position:relative;width:100%;height:100%;background:#fff;overflow:hidden;font-family:Georgia,serif;cursor:crosshair;'
+  const canvas = document.createElement('canvas')
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:1;'
+  const ring = document.createElement('canvas')
+  ring.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:8;pointer-events:none;'
+  const txt = document.createElement('div')
+  txt.style.cssText = 'position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;flex-direction:column;'
+  txt.innerHTML = '<div id="line1" style="font-size:clamp(36px,6vw,64px);font-weight:700;color:#1A3A8C;letter-spacing:-2px;line-height:1;">Make things</div><div id="line2" style="font-size:clamp(36px,6vw,64px);font-weight:700;color:#1A3A8C;letter-spacing:-2px;line-height:1;opacity:0.18;">much better.</div>'
+  const tkTop = mkTicker('top:58px;', '受託開発 &nbsp;×&nbsp; AI導入支援 &nbsp;×&nbsp; 業務自動化 &nbsp;×&nbsp; Webアプリ開発 &nbsp;×&nbsp; LINE連携 &nbsp;×&nbsp; コーポレートサイト')
+  const tkBot = mkTicker('bottom:42px;', 'Provydal &nbsp;·&nbsp; We build what you need &nbsp;·&nbsp; Tokyo, Japan &nbsp;·&nbsp; Custom Development &nbsp;·&nbsp; AI Integration')
+  const pgWrap = document.createElement('div')
+  pgWrap.style.cssText = 'position:absolute;bottom:0;left:0;right:0;height:3px;background:#E8ECF5;z-index:10;'
+  const pg = document.createElement('div')
+  pg.style.cssText = 'height:100%;width:0%;background:#1A3A8C;'
+  pgWrap.appendChild(pg)
+  container.append(canvas, ring, txt, tkTop, tkBot, pgWrap)
+  startAnim(container, canvas, ring, pg)
+}
+
+function mkTicker(pos, html) {
+  const w = document.createElement('div')
+  w.style.cssText = `position:absolute;${pos}left:0;right:0;height:40px;background:#1A3A8C;overflow:hidden;z-index:3;display:flex;align-items:center;justify-content:center;`
+  const i = document.createElement('div')
+  i.style.cssText = 'white-space:nowrap;color:#fff;font-size:15px;font-weight:700;letter-spacing:3px;font-family:Georgia,serif;'
+  i.innerHTML = `<span>${html}</span><span class="dup" style="display:none;">&emsp;&emsp;${html}&emsp;&emsp;</span>`
+  w.appendChild(i)
+  if (!document.getElementById('tks')) {
+    const s = document.createElement('style')
+    s.id = 'tks'
+    s.textContent = '@keyframes ts{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}'
+    document.head.appendChild(s)
+  }
+  const apply = () => {
+    if (window.innerWidth <= 768) { i.querySelector('.dup').style.display = 'inline'; i.style.animation = 'ts 18s linear infinite' }
+    else { i.querySelector('.dup').style.display = 'none'; i.style.animation = '' }
+  }
+  apply(); window.addEventListener('resize', apply)
+  return w
+}
+
+function startAnim(wrap, canvas, ring, pg) {
+  const ctx = canvas.getContext('2d'), rctx = ring.getContext('2d')
+  const ALPHA = 0.52
+  const resize = () => { canvas.width = ring.width = wrap.offsetWidth; canvas.height = ring.height = wrap.offsetHeight }
+  resize(); window.addEventListener('resize', resize)
+  const W = () => canvas.width, H = () => canvas.height
+  let mouse = {x:-999,y:-999}, pressing = false, pressStart = 0, pressX = 0, pressY = 0
+  const CHARGE_MS = 800; let lastGen = 0, goldAppeared = false
+  wrap.addEventListener('mousemove', e => { const r = wrap.getBoundingClientRect(); mouse.x = e.clientX-r.left; mouse.y = e.clientY-r.top })
+  wrap.addEventListener('mouseleave', () => { mouse.x=-999; mouse.y=-999; pressing=false; rctx.clearRect(0,0,W(),H()) })
+  wrap.addEventListener('mousedown', e => { const r=wrap.getBoundingClientRect(); pressing=true; pressStart=Date.now(); pressX=e.clientX-r.left; pressY=e.clientY-r.top })
+  wrap.addEventListener('mouseup', e => { const r=wrap.getBoundingClientRect(),dur=Date.now()-pressStart; if(dur<250){ripples.push({x:e.clientX-r.left,y:e.clientY-r.top,r:0,life:1});spawnP(e.clientX-r.left,e.clientY-r.top,22,false)} pressing=false; rctx.clearRect(0,0,W(),H()) })
+  wrap.addEventListener('touchstart', e => { e.preventDefault();const r=wrap.getBoundingClientRect(),t=e.touches[0]; pressing=true;pressStart=Date.now();pressX=t.clientX-r.left;pressY=t.clientY-r.top;mouse.x=pressX;mouse.y=pressY },{passive:false})
+  wrap.addEventListener('touchend', e => { e.preventDefault();const dur=Date.now()-pressStart; if(dur<250){ripples.push({x:pressX,y:pressY,r:0,life:1});spawnP(pressX,pressY,22,false)} pressing=false;mouse.x=-999;mouse.y=-999;rctx.clearRect(0,0,W(),H()) },{passive:false})
+  const mkRb = (x,y,r) => { const g=ctx.createLinearGradient(x-r,y-r*.5,x+r,y+r*.5); g.addColorStop(0,'#FF6FD8');g.addColorStop(.2,'#A070F0');g.addColorStop(.4,'#60A0FF');g.addColorStop(.6,'#40DDEE');g.addColorStop(.8,'#60E890');g.addColorStop(1,'#F0E840'); return g }
+  const mkRbR = (x,y,r) => { const g=rctx.createLinearGradient(x-r,y,x+r,y); g.addColorStop(0,'#FF6FD8');g.addColorStop(.33,'#60A0FF');g.addColorStop(.66,'#40DDEE');g.addColorStop(1,'#F0E840'); return g }
+  const drawRing = (x,y,c) => { rctx.clearRect(0,0,W(),H()); if(c<=0)return; rctx.save();rctx.globalAlpha=.15;rctx.beginPath();rctx.arc(x,y,38,0,Math.PI*2);rctx.strokeStyle='#1A3A8C';rctx.lineWidth=3;rctx.stroke();rctx.restore(); const p=Math.min(c,1); rctx.save();rctx.globalAlpha=.9;rctx.beginPath();rctx.arc(x,y,38,-Math.PI/2,-Math.PI/2+Math.PI*2*p);rctx.strokeStyle=mkRbR(x,y,38);rctx.lineWidth=4;rctx.lineCap='round';rctx.stroke();rctx.restore(); rctx.save();rctx.globalAlpha=p*.28;rctx.beginPath();rctx.arc(x,y,8+p*45,0,Math.PI*2);rctx.fillStyle='#A070F0';rctx.fill();rctx.restore() }
+  const drawSphere = (x,y,r,a,born,isGold) => {
+    const sc=Math.min(born?(Date.now()-born)/350:1,1),dr=r*sc; if(dr<1)return
+    ctx.save();ctx.globalAlpha=a*sc*.2; const sx=x+dr*.15,sy=y+dr*.85,sg=ctx.createRadialGradient(sx,sy,0,sx,sy,dr*1.1); sg.addColorStop(0,'rgba(20,30,80,.5)');sg.addColorStop(1,'rgba(20,30,80,0)'); ctx.beginPath();ctx.ellipse(sx,sy+dr*.3,dr*.9,dr*.28,0,0,Math.PI*2);ctx.fillStyle=sg;ctx.fill();ctx.restore()
+    const bg=ctx.createRadialGradient(x-dr*.35,y-dr*.35,0,x,y,dr)
+    if(isGold){bg.addColorStop(0,'rgba(255,240,160,1)');bg.addColorStop(.35,'rgba(230,180,30,1)');bg.addColorStop(.7,'rgba(180,120,10,1)');bg.addColorStop(1,'rgba(100,60,0,1)');ctx.save();ctx.globalAlpha=a*sc;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.fillStyle=bg;ctx.fill();ctx.restore();ctx.save();ctx.globalAlpha=a*sc*.6;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.strokeStyle='rgba(255,215,0,.5)';ctx.lineWidth=1.5;ctx.stroke();ctx.restore()}
+    else{bg.addColorStop(0,'rgba(255,255,255,.3)');bg.addColorStop(.3,'rgba(255,255,255,0)');bg.addColorStop(1,'rgba(0,0,0,.35)');ctx.save();ctx.globalAlpha=a*sc;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.fillStyle=mkRb(x,y,dr);ctx.fill();ctx.restore();ctx.save();ctx.globalAlpha=a*sc;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.fillStyle=bg;ctx.fill();ctx.restore()}
+    const hl=ctx.createRadialGradient(x-dr*.28,y-dr*.28,0,x-dr*.28,y-dr*.28,dr*.38); hl.addColorStop(0,'rgba(255,255,255,.92)');hl.addColorStop(.35,'rgba(255,255,255,.45)');hl.addColorStop(1,'rgba(255,255,255,0)'); ctx.save();ctx.globalAlpha=a*sc*.88;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.fillStyle=hl;ctx.fill();ctx.restore()
+    const hl2=ctx.createRadialGradient(x-dr*.38,y-dr*.38,0,x-dr*.38,y-dr*.38,dr*.14); hl2.addColorStop(0,'rgba(255,255,255,.98)');hl2.addColorStop(1,'rgba(255,255,255,0)'); ctx.save();ctx.globalAlpha=a*sc;ctx.beginPath();ctx.arc(x,y,dr,0,Math.PI*2);ctx.fillStyle=hl2;ctx.fill();ctx.restore()
+  }
+  const balls=[{x:180,y:240,vx:1.6,vy:1.0,r:85,a:ALPHA,born:0,isGold:false,trail:[]},{x:500,y:150,vx:-1.2,vy:1.5,r:50,a:ALPHA,born:0,isGold:false,trail:[]},{x:320,y:370,vx:1.0,vy:-1.8,r:28,a:ALPHA,born:0,isGold:false,trail:[]},{x:600,y:330,vx:-1.4,vy:-0.9,r:16,a:ALPHA,born:0,isGold:false,trail:[]},{x:80,y:110,vx:1.1,vy:1.3,r:10,a:ALPHA,born:0,isGold:false,trail:[]}]
+  let particles=[], ripples=[]
+  const spawnP=(x,y,n,isGold)=>{ for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=1+Math.random()*3; particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,r:1.5+Math.random()*3,life:1,decay:.02+Math.random()*.03,isGold:isGold||false})} }
+  const addBall=(x,y,c)=>{ const isGold=Math.random()<(goldAppeared?.005:.05); if(isGold)goldAppeared=true; const ang=Math.random()*Math.PI*2,spd=.7+Math.random()*1.4; balls.push({x,y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,r:12+c*52,a:ALPHA,born:Date.now(),isGold,trail:[]});spawnP(x,y,10,isGold) }
+  const TKB=()=>H()-82
+  const upBall=b=>{ const dx=b.x-mouse.x,dy=b.y-mouse.y,d=Math.hypot(dx,dy),rep=b.r*2.4; if(d<rep&&d>.1){const f=(rep-d)/rep*.5;b.vx+=(dx/d)*f;b.vy+=(dy/d)*f} const sp=Math.hypot(b.vx,b.vy); if(sp>3.4){b.vx=b.vx/sp*3.4;b.vy=b.vy/sp*3.4} b.trail.push({x:b.x,y:b.y});if(b.trail.length>24)b.trail.shift(); b.x+=b.vx;b.y+=b.vy; let hit=false; if(b.x-b.r<0){b.x=b.r;b.vx=Math.abs(b.vx);hit=true} if(b.x+b.r>W()){b.x=W()-b.r;b.vx=-Math.abs(b.vx);hit=true} if(b.y-b.r<0){b.y=b.r;b.vy=Math.abs(b.vy);hit=true} if(b.y+b.r>H()){b.y=H()-b.r;b.vy=-Math.abs(b.vy);hit=true} if(b.vy<0&&b.y-b.r<98&&b.y>58){b.vy=Math.abs(b.vy);b.y=98+b.r;hit=true} const by1=TKB(); if(b.vy>0&&b.y+b.r>by1&&b.y<by1+40){b.vy=-Math.abs(b.vy);b.y=by1-b.r;hit=true} if(hit)spawnP(b.x,b.y,Math.floor(b.r*.18),b.isGold) }
+  const line1=document.getElementById('line1'),line2=document.getElementById('line2')
+  let frame=0
+  const loop=()=>{ ctx.clearRect(0,0,W(),H()); if(pressing){const el=Date.now()-pressStart,c=Math.min(el/CHARGE_MS,1);drawRing(pressX,pressY,c);if(c>=1&&Date.now()-lastGen>900){lastGen=Date.now();addBall(pressX,pressY,c);pressStart=Date.now()}} balls.forEach(upBall); balls.forEach(b=>{if(b.trail.length<2)return;for(let i=1;i<b.trail.length;i++){const t=i/b.trail.length,r=b.r*t*.7,a=b.a*t*.28;if(r<1)continue;ctx.save();ctx.globalAlpha=a;ctx.beginPath();ctx.arc(b.trail[i].x,b.trail[i].y,r,0,Math.PI*2);ctx.fillStyle=b.isGold?'rgba(220,170,20,.8)':mkRb(b.trail[i].x,b.trail[i].y,r*1.5);ctx.fill();ctx.restore()}}); balls.forEach(b=>drawSphere(b.x,b.y,b.r,b.a,b.born,b.isGold)); particles=particles.filter(p=>p.life>0);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vx*=.93;p.vy*=.93;p.life-=p.decay;ctx.save();ctx.globalAlpha=Math.max(0,p.life)*.65;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.isGold?'rgba(230,180,20,.9)':mkRb(p.x,p.y,p.r*4);ctx.fill();ctx.restore()}); ripples=ripples.filter(r=>r.life>0);ripples.forEach(r=>{r.r+=4;r.life-=.03;ctx.save();ctx.globalAlpha=Math.max(0,r.life)*.45;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.strokeStyle='#1A3A8C';ctx.lineWidth=1.5;ctx.stroke();ctx.restore()}); const big=balls[0],d=Math.hypot(big.x-W()/2,big.y-H()/2),fade=Math.max(0,Math.min(1,(d-big.r*.5)/(big.r*1.4)));line1.style.opacity=fade;line2.style.opacity=Math.min(.2,fade*.22);const px=(W()/2-big.x)*.05,py=(H()/2-big.y)*.04;line1.style.transform=`translate(${-px}px,${-py}px)`;line2.style.transform=`translate(${-px*.4}px,${-py*.4}px)`; frame++;pg.style.width=((frame%900)/900*100)+'%'; requestAnimationFrame(loop) }
+  loop()
+}

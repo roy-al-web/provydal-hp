@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | Provydal</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.page-wrap { background: #fff; min-height: 100vh; }
+.page-header { padding: 140px 64px 72px; border-bottom: 1px solid #e8ecf4; }
+.page-header__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.page-header__label { font-family: Georgia,serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); opacity: 0.45; margin-bottom: 16px; }
+.page-header__title { font-family: Georgia,serif; font-size: clamp(40px,6vw,72px); font-weight: 700; color: var(--navy); line-height: 1.05; letter-spacing: -2px; margin-bottom: 0; }
+.page-header__lead { font-size: 15px; line-height: 1.9; color: #666; max-width: 420px; }
+.page-header--navy { background: var(--navy); border-bottom: none; }
+.page-header--navy .page-header__label { color: #fff; opacity: 0.4; }
+.page-header--navy .page-header__title { color: #fff; }
+.page-header--navy .page-header__lead { color: rgba(255,255,255,0.65); }
+.page-cta { background: var(--navy); padding: 80px 64px; }
+.page-cta__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-cta p { font-family: Georgia,serif; font-size: clamp(18px,3vw,26px); font-weight: 700; color: #fff; }
+@media(max-width:768px){ .page-header{padding:120px 24px 48px;} .page-cta{padding:60px 24px;} .page-cta__inner{flex-direction:column;align-items:flex-start;} }
+
+.about-section { padding: 100px 64px; }
+.about-section--white { background: #fff; }
+.about-section--gray { background: #f7f8fc; }
+.about-section__inner { max-width: 1100px; margin: 0 auto; }
+.about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.about-eyebrow { font-family:Georgia,serif; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--navy); opacity:0.4; margin-bottom:14px; }
+.about-h2 { font-family:Georgia,serif; font-size:clamp(26px,4vw,40px); font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:20px; }
+.about-p { font-size:14px; line-height:2; color:#555; margin-bottom:14px; }
+.about-table { width:100%; border-collapse:collapse; margin-top:16px; }
+.about-table tr { border-bottom:1px solid #e8ecf4; }
+.about-table th { padding:18px 12px 18px 0; font-size:12px; font-weight:500; color:#999; text-align:left; white-space:nowrap; width:140px; vertical-align:top; }
+.about-table td { padding:18px 0; font-size:14px; color:#222; line-height:1.7; }
+.about-table a { color:var(--navy); border-bottom:1px solid var(--navy); }
+@media(max-width:768px){ .about-section{padding:72px 24px;} .about-split{grid-template-columns:1fr; gap:48px;} }
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+<main>
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-header__inner">
+      <div><p class="page-header__label">Company</p><h1 class="page-header__title">会社概要</h1></div>
+      <p class="page-header__lead">テクノロジーの力で、あらゆる企業の課題を解決する。デジタルが当たり前の武器になる世界をつくります。</p>
+    </div>
+  </div>
+  <div class="about-section about-section--white" id="vision">
+    <div class="about-section__inner">
+      <div class="about-split">
+        <div class="fade-up">
+          <p class="about-eyebrow">Vision</p>
+          <h2 class="about-h2">課題に合わせて、<br>必要な開発を。</h2>
+          <p class="about-p">テクノロジーの力で、あらゆる企業の課題を解決する。大企業だけでなく中小企業・スタートアップにとっても、デジタルが当たり前の武器になる世界をつくります。</p>
+        </div>
+        <div class="fade-up">
+          <p class="about-eyebrow">Mission</p>
+          <h2 class="about-h2">伴走型の開発で、<br>成果をつくる。</h2>
+          <p class="about-p">「作って終わり」ではなく、要件定義から納品・運用まで一気通貫でサポート。クライアントのビジネス成果にコミットする開発パートナーであり続けます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-section about-section--gray" id="company">
+    <div class="about-section__inner">
+      <div class="about-split">
+        <div class="fade-up">
+          <p class="about-eyebrow">Company Profile</p>
+          <h2 class="about-h2">会社情報</h2>
+          <p class="about-p">Provydalは東京を拠点に、受託開発・AI導入支援・業務自動化を通じて企業のデジタル化を支援するデジタルクリエイティブスタジオです。</p>
+        </div>
+        <div class="fade-up">
+          <table class="about-table">
+            <tr><th>会社名</th><td>株式会社プロバイダル<br><small style="color:#aaa;font-size:12px;">Provydal Inc.</small></td></tr>
+            <tr><th>代表取締役</th><td>所 和哉（Kazuya Tokoro）</td></tr>
+            <tr><th>所在地</th><td>東京都</td></tr>
+            <tr><th>事業内容</th><td>受託開発・Web制作<br>AI導入支援・LINE連携<br>業務システム開発</td></tr>
+            <tr><th>URL</th><td><a href="https://provydal.com" target="_blank">provydal.com</a></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-cta"><div class="page-cta__inner"><p>開発のご相談・お見積もりはこちら</p><a href="/contact/" class="btn-fill">Contact<span>お問い合わせ</span></a></div></div>
+</div></main>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a><a href="/about/#vision">ビジョン</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script type="module">
+import { initNav } from '/js/nav.js';
+initNav();
+document.querySelectorAll('.fade-up').forEach(function(el){
+  new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible')});},{threshold:0.08}).observe(el);
+});
+</script>
+
+</body>
+</html>

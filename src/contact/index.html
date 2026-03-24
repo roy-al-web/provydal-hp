@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | Provydal</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.page-wrap { background: #fff; min-height: 100vh; }
+.page-header { padding: 140px 64px 72px; border-bottom: 1px solid #e8ecf4; }
+.page-header__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.page-header__label { font-family: Georgia,serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); opacity: 0.45; margin-bottom: 16px; }
+.page-header__title { font-family: Georgia,serif; font-size: clamp(40px,6vw,72px); font-weight: 700; color: var(--navy); line-height: 1.05; letter-spacing: -2px; margin-bottom: 0; }
+.page-header__lead { font-size: 15px; line-height: 1.9; color: #666; max-width: 420px; }
+.page-header--navy { background: var(--navy); border-bottom: none; }
+.page-header--navy .page-header__label { color: #fff; opacity: 0.4; }
+.page-header--navy .page-header__title { color: #fff; }
+.page-header--navy .page-header__lead { color: rgba(255,255,255,0.65); }
+.page-cta { background: var(--navy); padding: 80px 64px; }
+.page-cta__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-cta p { font-family: Georgia,serif; font-size: clamp(18px,3vw,26px); font-weight: 700; color: #fff; }
+@media(max-width:768px){ .page-header{padding:120px 24px 48px;} .page-cta{padding:60px 24px;} .page-cta__inner{flex-direction:column;align-items:flex-start;} }
+
+.contact-body { padding: 64px 64px 120px; background:#fff; }
+.contact-body__inner { max-width: 780px; margin: 0 auto; }
+.contact-form { display:flex; flex-direction:column; gap:28px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.form-group { display:flex; flex-direction:column; gap:8px; }
+.form-group label { font-size:13px; font-weight:600; color:#333; }
+.form-req { font-size:10px; color:#e05252; margin-left:4px; }
+.form-group input,.form-group select,.form-group textarea { width:100%; padding:14px 16px; border:1.5px solid #dde4f0; font-size:14px; font-family:-apple-system,sans-serif; background:#fff; transition:border-color 0.2s; outline:none; border-radius:2px; color:#111; }
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--navy); }
+.form-group textarea { resize:vertical; min-height:160px; }
+.contact-divider { border:none; border-top:1px solid #e8ecf4; margin:56px 0; }
+.contact-info-row { display:flex; gap:56px; flex-wrap:wrap; }
+.contact-info-item p.label { font-size:10px; color:#aaa; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+.contact-info-item a { font-size:15px; color:var(--navy); border-bottom:1px solid var(--navy); text-decoration:none; }
+.contact-info-item p.val { font-size:15px; color:#333; }
+@media(max-width:768px){ .contact-body{padding:40px 24px 80px;} .form-row{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+<main>
+<div class="page-wrap">
+  <div class="page-header" style="background:#f7f8fc;border-bottom:1px solid #e8ecf4;">
+    <div class="page-header__inner">
+      <div><p class="page-header__label">Contact</p><h1 class="page-header__title">ご相談はこちら</h1></div>
+      <p class="page-header__lead">開発のご依頼・AI導入のご相談・お見積もりなど、まずはお気軽にお問い合わせください。通常2営業日以内にご返信いたします。</p>
+    </div>
+  </div>
+  <div class="contact-body">
+    <div class="contact-body__inner">
+      <form class="contact-form" id="cForm">
+        <div class="form-row">
+          <div class="form-group fade-up"><label>お名前<span class="form-req">必須</span></label><input type="text" name="name" placeholder="所 和哉" required></div>
+          <div class="form-group fade-up"><label>会社名</label><input type="text" name="company" placeholder="株式会社プロバイダル"></div>
+        </div>
+        <div class="form-group fade-up"><label>メールアドレス<span class="form-req">必須</span></label><input type="email" name="email" placeholder="info@provydal.com" required></div>
+        <div class="form-row">
+          <div class="form-group fade-up"><label>お問い合わせ種別<span class="form-req">必須</span></label><select name="type" required><option value="">選択してください</option><option>受託開発・Web制作のご依頼</option><option>AI導入支援のご相談</option><option>LINE連携・業務自動化のご相談</option><option>業務システム開発のご相談</option><option>採用についてのお問い合わせ</option><option>その他</option></select></div>
+          <div class="form-group fade-up"><label>ご予算感</label><select name="budget"><option value="">任意</option><option>〜50万円</option><option>50〜100万円</option><option>100〜300万円</option><option>300万円以上</option><option>未定・相談したい</option></select></div>
+        </div>
+        <div class="form-group fade-up"><label>お問い合わせ内容<span class="form-req">必須</span></label><textarea name="message" placeholder="ご依頼の背景・課題・希望する機能などをご記入ください" required></textarea></div>
+        <div class="fade-up"><button type="submit" class="btn-fill">送信する<span>Send Message</span></button></div>
+      </form>
+      <hr class="contact-divider">
+      <div class="contact-info-row fade-up">
+        <div class="contact-info-item"><p class="label">Email</p><a href="mailto:info@provydal.com">info@provydal.com</a></div>
+        <div class="contact-info-item"><p class="label">Office</p><p class="val">Tokyo, Japan</p></div>
+      </div>
+    </div>
+  </div>
+</div></main>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a><a href="/about/#vision">ビジョン</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script type="module">
+import { initNav } from '/js/nav.js';
+initNav();
+document.querySelectorAll('.fade-up').forEach(function(el){
+  new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible')});},{threshold:0.08}).observe(el);
+});
+</script>
+
+</body>
+</html><script>
+document.getElementById('cForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  alert('お問い合わせありがとうございます。\n担当者よりご連絡いたします。');
+  e.target.reset();
+});
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ニュース | Provydal</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.news-wrap{max-width:1000px;margin:0 auto;padding:140px 48px 120px;}
+.news-eyebrow{font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:14px;}
+.news-h1{font-family:var(--font);font-size:min(72px,7vw);font-weight:700;color:var(--navy);line-height:1.05;letter-spacing:-2px;margin-bottom:56px;}
+.news-list{list-style:none;}
+.news-list__item{border-bottom:1px solid #e4e8f0;}
+.news-list__item a{display:grid;grid-template-columns:96px 88px 1fr 28px;align-items:center;gap:24px;padding:28px 0;transition:padding-left .2s;}
+.news-list__item a:hover{padding-left:6px;}
+.news-tag{font-size:10px;border:1px solid var(--navy);color:var(--navy);padding:3px 8px;border-radius:20px;white-space:nowrap;text-align:center;}
+.news-date{font-size:12px;color:#aaa;}
+.news-text h3{font-size:15px;font-weight:600;color:#111;line-height:1.5;}
+.news-arr{font-size:16px;color:var(--navy);opacity:.4;}
+@media(max-width:768px){.news-wrap{padding:100px 20px 80px;}.news-list__item a{grid-template-columns:1fr;gap:8px;}.news-arr{display:none;}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+<div class="news-wrap">
+  <p class="news-eyebrow">News</p>
+  <h1 class="news-h1">ニュース</h1>
+  <ul class="news-list"><li class="news-list__item">
+  <a href="/news/ai-service/">
+    <span class="news-tag">お知らせ</span>
+    <span class="news-date">2026/03/20</span>
+    <div class="news-text"><h3>生成AI導入支援サービスの提供を本格開始</h3></div>
+    <span class="news-arr">→</span>
+  </a>
+</li><li class="news-list__item">
+  <a href="/news/real-estate/">
+    <span class="news-tag">実績</span>
+    <span class="news-date">2026/03/10</span>
+    <div class="news-text"><h3>不動産プラットフォームの開発案件を受注・着工</h3></div>
+    <span class="news-arr">→</span>
+  </a>
+</li><li class="news-list__item">
+  <a href="/news/line-package/">
+    <span class="news-tag">お知らせ</span>
+    <span class="news-date">2026/02/28</span>
+    <div class="news-text"><h3>LINE連携・業務自動化パッケージの提供を開始</h3></div>
+    <span class="news-arr">→</span>
+  </a>
+</li><li class="news-list__item">
+  <a href="/news/media/">
+    <span class="news-tag">メディア</span>
+    <span class="news-date">2026/02/14</span>
+    <div class="news-text"><h3>代表・所和哉がAI導入支援についてインタビューに登場</h3></div>
+    <span class="news-arr">→</span>
+  </a>
+</li><li class="news-list__item">
+  <a href="/news/dx-package/">
+    <span class="news-tag">実績</span>
+    <span class="news-date">2026/01/30</span>
+    <div class="news-text"><h3>中小企業向けDX支援パッケージをリリース</h3></div>
+    <span class="news-arr">→</span>
+  </a>
+</li></ul>
+</div>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

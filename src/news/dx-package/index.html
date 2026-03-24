@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>中小企業向けDX支援パッケージをリリース | Provydal News</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+
+.art-header{background:var(--navy);padding:140px 48px 80px;}
+.art-header__inner{max-width:800px;margin:0 auto;}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;transition:color .2s;}
+.art-back:hover{color:#fff;}
+.art-tag{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:3px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.art-title{font-family:var(--font);font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;}
+.art-meta{display:flex;gap:24px;}
+.art-meta__date,.art-meta__by{font-size:13px;color:rgba(255,255,255,.45);}
+
+.art-eyecatch{width:100%;aspect-ratio:16/6;background:linear-gradient(135deg,#1A3A8C,#2d52b0);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.art-eyecatch::before{content:'';position:absolute;right:-5%;top:-20%;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.04);}
+.art-eyecatch__inner{position:relative;z-index:1;text-align:center;}
+.art-eyecatch__catch{font-family:var(--font);font-size:clamp(20px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:12px;}
+.art-eyecatch__sub{font-size:13px;color:rgba(255,255,255,.55);}
+
+.art-body-wrap{max-width:800px;margin:0 auto;padding:64px 48px 80px;}
+.art-lead{font-size:17px;line-height:2;color:#333;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #e8ecf4;}
+
+.art-section{margin-bottom:52px;}
+.art-section h2{font-family:var(--font);font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--navy);margin-bottom:20px;padding-left:16px;border-left:4px solid var(--navy);}
+.art-section h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 12px;}
+.art-section p{font-size:15px;line-height:2;color:#333;margin-bottom:16px;}
+.art-section ul{margin:0 0 16px 1.5em;}
+.art-section ul li{font-size:15px;line-height:1.9;color:#333;margin-bottom:8px;}
+
+.art-box{background:#f0f4ff;border-left:4px solid var(--navy);padding:24px 28px;margin:24px 0;border-radius:0 4px 4px 0;}
+.art-box p{font-size:15px;line-height:1.9;color:#333;margin:0;}
+.art-box strong{color:var(--navy);}
+
+/* Provydalの強み：課題選定→設計→開発フロー */
+.strength-flow{margin:28px 0;}
+.strength-flow__title{font-size:13px;font-weight:700;color:var(--navy);opacity:.5;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+.strength-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;position:relative;}
+.strength-step{background:#f7f8fc;padding:24px 20px;position:relative;}
+.strength-step__num{font-family:var(--font);font-size:11px;color:var(--navy);opacity:.3;letter-spacing:2px;margin-bottom:10px;}
+.strength-step__icon{font-size:24px;margin-bottom:10px;}
+.strength-step h4{font-family:var(--font);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3;}
+.strength-step p{font-size:12px;line-height:1.7;color:#555;}
+.strength-step--highlight{background:var(--navy);}
+.strength-step--highlight .strength-step__num{color:rgba(255,255,255,.3);}
+.strength-step--highlight h4{color:#fff;}
+.strength-step--highlight p{color:rgba(255,255,255,.65);}
+
+/* 他社との違いを示す比較 */
+.diff-visual{margin:24px 0;}
+.diff-row{display:grid;grid-template-columns:180px 1fr 1fr;gap:2px;margin-bottom:2px;align-items:stretch;}
+.diff-row--header .diff-cell{background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:10px 16px;}
+.diff-cell{padding:16px 18px;font-size:13px;line-height:1.7;background:#f7f8fc;}
+.diff-cell--label{background:#eef1fa;font-weight:600;color:var(--navy);font-size:13px;display:flex;align-items:center;}
+.diff-cell--bad{background:#fff;color:#aaa;}
+.diff-cell--bad::before{content:'✗ ';color:#ddd;}
+.diff-cell--good{background:#fff;color:#333;font-weight:500;}
+.diff-cell--good::before{content:'◎ ';color:var(--navy);}
+
+/* 3プラン */
+.plans{display:flex;flex-direction:column;gap:3px;margin:24px 0;}
+.plan{display:grid;grid-template-columns:188px 1fr;overflow:hidden;}
+.plan__left{background:var(--navy);padding:28px 20px;display:flex;flex-direction:column;justify-content:center;}
+.plan__num{font-family:var(--font);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:2px;margin-bottom:8px;}
+.plan__name{font-family:var(--font);font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;}
+.plan__target{font-size:11px;color:rgba(255,255,255,.5);line-height:1.6;}
+.plan__right{background:#f7f8fc;padding:24px 28px;}
+.plan__headline{font-family:var(--font);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.plan__desc{font-size:13px;line-height:1.85;color:#555;margin-bottom:14px;}
+.plan__items{display:flex;flex-wrap:wrap;gap:6px;}
+.plan__item{font-size:11px;background:#fff;border:1px solid #d0d8ee;color:var(--navy);padding:3px 10px;border-radius:3px;}
+
+/* 実例コンパクト */
+.case-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+.case-item{background:#f7f8fc;padding:20px 22px;border-left:3px solid var(--navy);}
+.case-item__industry{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:8px;}
+.case-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.4;}
+.case-item__before{font-size:12px;color:#888;margin-bottom:6px;line-height:1.6;}
+.case-item__after{font-size:13px;color:#333;font-weight:600;line-height:1.6;}
+.case-item__result{font-size:12px;color:var(--navy);font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid #e0e6f4;}
+
+.art-cta{background:var(--navy);padding:48px;border-radius:6px;text-align:center;margin-top:64px;}
+.art-cta h3{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.8;}
+.art-cta a{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:16px 48px;transition:opacity .2s;}
+.art-cta a:hover{opacity:.88;}
+.art-cta a span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+.art-related{margin-top:64px;padding-top:40px;border-top:1px solid #e8ecf4;}
+.art-related h3{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:20px;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-related-card{display:block;padding:20px 24px;background:#f7f8fc;border-left:3px solid var(--navy);transition:background .2s;}
+.art-related-card:hover{background:#eef1fa;}
+.art-related-card__tag{font-size:10px;color:var(--navy);opacity:.45;margin-bottom:6px;display:block;}
+.art-related-card__title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5;}
+
+@media(max-width:768px){
+  .art-header{padding:120px 24px 60px;}
+  .art-body-wrap{padding:48px 20px 60px;}
+  .strength-steps{grid-template-columns:1fr 1fr;}
+  .plan{grid-template-columns:1fr;}
+  .case-list,.art-related-grid{grid-template-columns:1fr;}
+  .diff-row{grid-template-columns:1fr;}
+  .diff-row--header{display:none;}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="art-header">
+  <div class="art-header__inner">
+    <a href="/news/" class="art-back">← ニュース一覧へ戻る</a>
+    <p class="art-tag">お知らせ</p>
+    <h1 class="art-title">小さく始めて、確実に変われる——<br>中小企業向けDX支援パッケージをリリース</h1>
+    <div class="art-meta">
+      <span class="art-meta__date">2026年1月30日</span>
+      <span class="art-meta__by">Provydal 広報</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-eyecatch">
+  <div class="art-eyecatch__inner">
+    <p class="art-eyecatch__catch">「何から始めればいいかわからない」<br>その課題から一緒に整理します</p>
+    <p class="art-eyecatch__sub">課題選定 → 解決策設計 → 開発・実装 まで、Provydalが一気通貫で対応</p>
+  </div>
+</div>
+
+<div class="art-body-wrap">
+  <p class="art-lead">株式会社プロバイダル（Provydal）は2026年1月より、中小企業・個人事業主向けの「DX支援パッケージ」の提供を開始しました。Provydalの最大の強みは、<strong>「何を作るか」を決める前に、まず「何が課題か」を一緒に整理すること</strong>。課題の選定から解決策の設計、そして開発・実装まで一気通貫で担い、「小さく始めて確実に変わる」DXを実現します。</p>
+
+  <div class="art-section">
+    <h2>Provydalの強み——「課題選定→設計→開発」を一社で担う</h2>
+    <p>多くのDX支援では、「とりあえずシステムを入れる」「流行っているからAIを導入する」という進め方になりがちです。その結果、使われないシステムが生まれ、投資が無駄になります。</p>
+    <p>Provydalはまったく逆のアプローチを取ります。<strong>最初にやるのは「課題の選定」</strong>。どの業務が一番のボトルネックになっているかを一緒に洗い出し、その課題に対して最も効果的な解決策を設計してから、初めて開発に入ります。</p>
+
+    <div class="strength-flow">
+      <p class="strength-flow__title">Provydalのアプローチ</p>
+      <div class="strength-steps">
+        <div class="strength-step strength-step--highlight">
+          <p class="strength-step__num">STEP 01</p>
+          <div class="strength-step__icon">🔍</div>
+          <h4>課題の選定</h4>
+          <p>「どの業務が一番の足かせか」をヒアリングで明確にする。ここがすべての起点。</p>
+        </div>
+        <div class="strength-step">
+          <p class="strength-step__num">STEP 02</p>
+          <div class="strength-step__icon">🗺️</div>
+          <h4>解決策の設計</h4>
+          <p>課題に対して「Web・AI・LINE・システム」どの手段が最適かを選定。ゴールから逆算して設計する。</p>
+        </div>
+        <div class="strength-step">
+          <p class="strength-step__num">STEP 03</p>
+          <div class="strength-step__icon">⚙️</div>
+          <h4>開発・実装</h4>
+          <p>設計した解決策を実際に構築。Web・AI・LINE・システムすべてを一社で対応できる。</p>
+        </div>
+        <div class="strength-step">
+          <p class="strength-step__num">STEP 04</p>
+          <div class="strength-step__icon">📈</div>
+          <h4>伴走・改善</h4>
+          <p>納品で終わらず、成果が出るまでフォロー。使われない仕組みにしない。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="art-box">
+      <p>たとえばある相談者が「売上を上げたい」と言ってきたとき、多くの会社は「じゃあサイトを作りましょう」と提案します。でも実際にヒアリングすると、本当の課題はリピート率の低さとカゴ落ちの多さだったりする。その場合、新しいサイトを作るより<strong>LINEの自動フォローアップを構築するほうが、早く・安く・確実に成果が出ます</strong>。課題を先に選定するから、最適な手段が選べるんです。</p>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>他社との違い——「課題から考える」会社はほぼいない</h2>
+    <p>DX支援・Web制作・AI導入の会社は数多くありますが、ほとんどは「自社サービスを売ること」が起点になっています。Provydalが違う理由はここです。</p>
+
+    <div class="diff-visual">
+      <div class="diff-row diff-row--header">
+        <div class="diff-cell">比較ポイント</div>
+        <div class="diff-cell">一般的な制作会社・SIer</div>
+        <div class="diff-cell">Provydal</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">起点</div>
+        <div class="diff-cell diff-cell--bad">「何を作るか」から始まる</div>
+        <div class="diff-cell diff-cell--good">「何が課題か」から始まる</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">提案の幅</div>
+        <div class="diff-cell diff-cell--bad">自社サービスの範囲内でしか提案できない</div>
+        <div class="diff-cell diff-cell--good">Web・AI・LINE・システムから課題に合った手段を選ぶ</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">対応範囲</div>
+        <div class="diff-cell diff-cell--bad">Web制作はWeb専門、AIは別会社、と分断</div>
+        <div class="diff-cell diff-cell--good">すべてを一社・一担当者で対応</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">費用感</div>
+        <div class="diff-cell diff-cell--bad">中小企業には高すぎる見積もりになりがち</div>
+        <div class="diff-cell diff-cell--good">課題に必要な分だけ。最小コストで最大効果を設計</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">納品後</div>
+        <div class="diff-cell diff-cell--bad">納品で終わり。使われなくても関係ない</div>
+        <div class="diff-cell diff-cell--good">成果が出るまで伴走。使われる仕組みを一緒に作る</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-cell diff-cell--label">窓口</div>
+        <div class="diff-cell diff-cell--bad">担当者が変わる・要件が伝言ゲームになる</div>
+        <div class="diff-cell diff-cell--good">代表が直接対応。最初から最後まで同じ人間</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>3つのプラン——どこからでも始められる</h2>
+    <p>課題の大きさ・予算・会社の状況に合わせて、3段階で設計しています。いきなり全部やる必要はありません。まず1つの課題から始めて、確実に成果を出してから次に進む——それがProvydalのスタンスです。</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan__left">
+          <p class="plan__num">PLAN 01</p>
+          <p class="plan__name">STARTER</p>
+          <p class="plan__target">「Webで見つけてもらえていない」を解決したい方</p>
+        </div>
+        <div class="plan__right">
+          <p class="plan__headline">まずWebの入口を整える</p>
+          <p class="plan__desc">集客できていないサイト・スマホ非対応・更新できないCMS——これらをまとめて解決します。GoogleやSNSからお客様が来る状態を最短で作ります。</p>
+          <div class="plan__items">
+            <span class="plan__item">コーポレートサイト or LP制作</span>
+            <span class="plan__item">スマホ完全対応</span>
+            <span class="plan__item">SEO基本設定</span>
+            <span class="plan__item">Google Analytics導入</span>
+            <span class="plan__item">自分で更新できるCMS</span>
+          </div>
+        </div>
+      </div>
+      <div class="plan">
+        <div class="plan__left">
+          <p class="plan__num">PLAN 02</p>
+          <p class="plan__name">STANDARD</p>
+          <p class="plan__target">「定型業務の手作業をなくしたい」方</p>
+        </div>
+        <div class="plan__right">
+          <p class="plan__headline">繰り返し作業を仕組みで自動化する</p>
+          <p class="plan__desc">STARTERの内容に加え、毎日繰り返している定型業務を自動化します。問い合わせ対応・予約管理・発送通知——これらを仕組みで回し、月10〜20時間を取り戻します。</p>
+          <div class="plan__items">
+            <span class="plan__item">STARTER全内容</span>
+            <span class="plan__item">LINE問い合わせ自動化</span>
+            <span class="plan__item">予約・リマインド自動化</span>
+            <span class="plan__item">EC連携（Shopify / BASE等）</span>
+            <span class="plan__item">導入後3ヶ月サポート</span>
+          </div>
+        </div>
+      </div>
+      <div class="plan">
+        <div class="plan__left">
+          <p class="plan__num">PLAN 03</p>
+          <p class="plan__name">ADVANCED</p>
+          <p class="plan__target">「AI・専用システムで本格的に変わりたい」方</p>
+        </div>
+        <div class="plan__right">
+          <p class="plan__headline">AI活用とシステム化で組織ごと変える</p>
+          <p class="plan__desc">STANDARDに加え、生成AIの業務組み込みとExcel管理からの移行を実施。少人数でも大きな成果を出せる体制を、Provydalが伴走しながら6ヶ月で作り上げます。</p>
+          <div class="plan__items">
+            <span class="plan__item">STANDARD全内容</span>
+            <span class="plan__item">AI議事録・報告書自動化</span>
+            <span class="plan__item">社内FAQチャットボット構築</span>
+            <span class="plan__item">Excel→管理システム移行</span>
+            <span class="plan__item">社内AI研修・定着支援</span>
+            <span class="plan__item">6ヶ月伴走サポート</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>「課題から考えた」からこそ成果が出た実例</h2>
+    <p>「何を作るか」ではなく「何が課題か」から始めることで、意外な解決策にたどり着いたケースを紹介します。</p>
+    <div class="case-list">
+      <div class="case-item">
+        <p class="case-item__industry">EC / アパレル通販</p>
+        <h4>「売上を上げたい」→ 新しいサイトより先にLINE自動化</h4>
+        <p class="case-item__before">相談内容：サイトをリニューアルして売上を上げたい</p>
+        <p class="case-item__after">ヒアリングで判明した本当の課題：カゴ落ち率が高く、リピート購入も少ない。サイトのデザインより顧客フォローが先決。</p>
+        <p class="case-item__result">→ LINE自動化を先に実施。カゴ落ち改善＋リピート率向上で月商+18%</p>
+      </div>
+      <div class="case-item">
+        <p class="case-item__industry">士業 / 税理士事務所</p>
+        <h4>「業務を効率化したい」→ AIより先にExcel脱却</h4>
+        <p class="case-item__before">相談内容：AIを使って業務を効率化したい</p>
+        <p class="case-item__after">ヒアリングで判明した本当の課題：顧客情報・案件進捗がExcelに散在し、スタッフ間の情報共有に毎日30分以上かかっている。</p>
+        <p class="case-item__result">→ 管理システムを先に構築。情報共有の課題が解消され、その後AIを追加導入</p>
+      </div>
+      <div class="case-item">
+        <p class="case-item__industry">飲食業 / テイクアウト専門店</p>
+        <h4>「集客したい」→ SNS広告よりLINE予約自動化が先</h4>
+        <p class="case-item__before">相談内容：SNS広告やサイトで集客を強化したい</p>
+        <p class="case-item__after">ヒアリングで判明した本当の課題：既存の常連客からの予約電話対応に追われ、調理に集中できていない。新規より既存顧客の体験改善が先。</p>
+        <p class="case-item__result">→ LINE予約自動化で対応工数を週12時間削減。満足度向上でリピート率も改善</p>
+      </div>
+      <div class="case-item">
+        <p class="case-item__industry">製造業 / 部品メーカー</p>
+        <h4>「Webを作りたい」→ 管理システムと同時構築が最適解</h4>
+        <p class="case-item__before">相談内容：コーポレートサイトを作って問い合わせを増やしたい</p>
+        <p class="case-item__after">ヒアリングで判明した本当の課題：問い合わせが増えても対応できる体制がない。顧客管理・見積もり管理がすべて紙とExcel。</p>
+        <p class="case-item__result">→ サイトと管理システムを同時構築。問い合わせ増加にも対応できる体制を先に整備</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-section">
+    <h2>こんな経営者にまず相談してほしい</h2>
+    <ul>
+      <li>「DXしたい」とは思っているが、何から始めればいいかわからない</li>
+      <li>以前、開発会社やコンサルに頼んで成果が出なかった経験がある</li>
+      <li>予算は限られているが、本当に効果のある投資をしたい</li>
+      <li>自社の課題が何なのか、自分でもまだ整理できていない</li>
+      <li>社内にIT担当者がいないので、窓口を一本化したい</li>
+    </ul>
+    <div class="art-box">
+      <p><strong>課題が整理できていなくても、仕様書がなくても大丈夫です。</strong>「なんとなく困っている」という段階でのご相談が、実は一番うまくいきます。初回ヒアリング（30分・オンライン）は無料です。</p>
+    </div>
+  </div>
+
+  <div class="art-cta">
+    <h3>まず「何が課題か」を<br>一緒に整理しましょう</h3>
+    <p>「小さく始めて確実に変わる」ための最初の一歩。<br>何から話せばいいかわからなくても大丈夫です。</p>
+    <a href="/contact/">無料相談はこちら<span>Contact Us — 初回ヒアリング無料</span></a>
+  </div>
+
+  <div class="art-related">
+    <h3>Related</h3>
+    <div class="art-related-grid">
+      <a href="/news/ai-service/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">生成AI導入支援サービスの提供を本格開始</span>
+      </a>
+      <a href="/news/line-package/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">LINE連携・業務自動化パッケージの提供を開始</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

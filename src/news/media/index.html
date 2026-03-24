@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>代表・所和哉インタビュー「技術より課題の理解が先」 | Provydal News</title>
+<link rel="stylesheet" href="/css/main.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#1A3A8C;--font:Georgia,'Times New Roman',serif;}
+body{font-family:-apple-system,'Hiragino Sans',sans-serif;color:#111;background:#fff;line-height:1.8;}
+a{text-decoration:none;color:inherit;}
+
+.art-header{background:var(--navy);padding:140px 48px 80px;}
+.art-header__inner{max-width:800px;margin:0 auto;}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;transition:color .2s;}
+.art-back:hover{color:#fff;}
+.art-tag{font-size:11px;border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);padding:3px 14px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+.art-title{font-family:var(--font);font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;}
+.art-meta{display:flex;gap:24px;align-items:center;}
+.art-meta__date,.art-meta__by{font-size:13px;color:rgba(255,255,255,.45);}
+
+.art-eyecatch{width:100%;aspect-ratio:16/6;background:linear-gradient(135deg,#1A3A8C,#2d52b0);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.art-eyecatch::before{content:'';position:absolute;right:-5%;top:-20%;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.art-eyecatch__inner{position:relative;z-index:1;text-align:center;}
+.art-eyecatch__photo{width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.1);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:40px;border:2px solid rgba(255,255,255,0.2);}
+.art-eyecatch__name{font-family:var(--font);font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;}
+.art-eyecatch__role{font-size:12px;color:rgba(255,255,255,0.5);}
+
+.art-body-wrap{max-width:800px;margin:0 auto;padding:64px 48px 80px;}
+.art-lead{font-size:17px;line-height:2;color:#333;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #e8ecf4;}
+
+/* インタビューQ&A */
+.interview{display:flex;flex-direction:column;gap:40px;margin-bottom:52px;}
+.interview-q{background:#f0f4ff;padding:24px 28px;border-radius:4px;position:relative;}
+.interview-q::before{content:'Q';font-family:var(--font);font-size:11px;font-weight:700;background:var(--navy);color:#fff;padding:2px 8px;border-radius:3px;margin-right:12px;display:inline-block;margin-bottom:8px;}
+.interview-q p{font-size:16px;font-weight:600;color:var(--navy);line-height:1.6;}
+.interview-a{padding:0 0 0 24px;border-left:3px solid #e0e6f4;}
+.interview-a__label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--navy);opacity:.4;margin-bottom:12px;display:block;}
+.interview-a p{font-size:15px;line-height:2;color:#333;margin-bottom:14px;}
+.interview-a p:last-child{margin-bottom:0;}
+.interview-a strong{color:var(--navy);}
+
+/* 引用ブロック */
+.quote{background:#fff;border:1px solid #e0e8f4;border-left:4px solid var(--navy);padding:24px 28px;margin:20px 0;position:relative;}
+.quote::before{content:'"';font-family:var(--font);font-size:60px;color:var(--navy);opacity:.1;position:absolute;top:-10px;left:12px;line-height:1;}
+.quote p{font-family:var(--font);font-size:16px;line-height:1.85;color:var(--navy);font-style:italic;position:relative;z-index:1;}
+.quote__attr{font-size:12px;color:#888;margin-top:12px;text-align:right;}
+
+.art-section{margin-bottom:52px;}
+.art-section h2{font-family:var(--font);font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--navy);margin-bottom:20px;padding-left:16px;border-left:4px solid var(--navy);}
+.art-section p{font-size:15px;line-height:2;color:#333;margin-bottom:16px;}
+.art-section ul{margin:0 0 16px 1.5em;}
+.art-section ul li{font-size:15px;line-height:1.9;color:#333;margin-bottom:8px;}
+
+/* 将来視点カード */
+.future-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.future-card{padding:24px 24px;background:#f7f8fc;border-top:3px solid var(--navy);}
+.future-card__label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:10px;display:block;}
+.future-card h4{font-family:var(--font);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3;}
+.future-card p{font-size:13px;line-height:1.8;color:#555;}
+
+/* プロフィール */
+.profile{display:flex;gap:28px;align-items:flex-start;padding:28px;background:#f7f8fc;border-radius:4px;margin:40px 0;}
+.profile__photo{width:72px;height:72px;border-radius:50%;background:#d4ddf5;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;}
+.profile__name{font-family:var(--font);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.profile__role{font-size:12px;color:#888;margin-bottom:10px;}
+.profile__bio{font-size:13px;line-height:1.8;color:#555;}
+
+.art-cta{background:var(--navy);padding:48px;border-radius:6px;text-align:center;margin-top:64px;}
+.art-cta h3{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.8;}
+.art-cta a{display:inline-flex;flex-direction:column;align-items:center;background:#fff;color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:16px 48px;transition:opacity .2s;}
+.art-cta a:hover{opacity:.88;}
+.art-cta a span{font-size:10px;color:rgba(26,58,140,.45);margin-top:3px;}
+
+.art-related{margin-top:64px;padding-top:40px;border-top:1px solid #e8ecf4;}
+.art-related h3{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);opacity:.4;margin-bottom:20px;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.art-related-card{display:block;padding:20px 24px;background:#f7f8fc;border-left:3px solid var(--navy);transition:background .2s;}
+.art-related-card:hover{background:#eef1fa;}
+.art-related-card__tag{font-size:10px;color:var(--navy);opacity:.45;margin-bottom:6px;display:block;}
+.art-related-card__title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.5;}
+
+@media(max-width:768px){
+  .art-header{padding:120px 24px 60px;}
+  .art-body-wrap{padding:48px 20px 60px;}
+  .future-grid,.art-related-grid{grid-template-columns:1fr;}
+  .profile{flex-direction:column;gap:16px;}
+}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><span class="nav__logo-bar"></span>Provydal</a>
+    <div class="nav__right">
+      <div class="nav__links">
+          <a href="/about/" class="nav__link">会社概要</a>
+          <a href="/service/" class="nav__link">事業内容</a>
+          <a href="/works/" class="nav__link">実績・事例</a>
+          <a href="/news/" class="nav__link">ニュース</a>
+          <a href="/career/" class="nav__link">採用情報</a>
+        </div>
+        <a href="/contact/" class="nav__contact-btn">ご相談はこちら</a>
+      <button class="nav__burger" id="burger"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-overlay__inner">
+    <nav class="menu-overlay__nav">
+      <a href="/about/"   class="menu-overlay__item" data-close>Company<small>会社概要</small></a>
+      <a href="/service/" class="menu-overlay__item" data-close>Service<small>事業内容</small></a>
+      <a href="/works/"   class="menu-overlay__item" data-close>Our Works<small>事例・実績</small></a>
+      <a href="/news/"    class="menu-overlay__item" data-close>News<small>ニュース</small></a>
+      <a href="/career/"  class="menu-overlay__item" data-close>Career<small>採用情報</small></a>
+    </nav>
+    <div class="menu-overlay__footer">
+      <a href="/contact/" class="menu-overlay__contact" data-close>Contact<span>ご相談はこちら</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="art-header">
+  <div class="art-header__inner">
+    <a href="/news/" class="art-back">← ニュース一覧へ戻る</a>
+    <p class="art-tag">メディア</p>
+    <h1 class="art-title">「技術より、課題の理解が先」——<br>代表・所和哉が語るAI導入の本質と、Provydalが伴走型にこだわる理由</h1>
+    <div class="art-meta">
+      <span class="art-meta__date">2026年2月14日</span>
+      <span class="art-meta__by">Provydal 広報</span>
+    </div>
+  </div>
+</div>
+
+<div class="art-eyecatch">
+  <div class="art-eyecatch__inner">
+    <div class="art-eyecatch__photo">👤</div>
+    <p class="art-eyecatch__name">所 和哉（Kazuya Tokoro）</p>
+    <p class="art-eyecatch__role">株式会社プロバイダル 代表取締役</p>
+  </div>
+</div>
+
+<div class="art-body-wrap">
+  <p class="art-lead">中小企業向けのDX・AI活用をテーマにしたメディアに、株式会社プロバイダル（Provydal）代表の所和哉が登場。「AIを使いたいが何から始めればいいかわからない」という企業経営者に向けて、AI導入で失敗するパターン、Provydalが伴走型にこだわる理由、そして開発・AI業界の今後について語りました。</p>
+
+  <div class="profile">
+    <div class="profile__photo">👤</div>
+    <div>
+      <p class="profile__name">所 和哉（Kazuya Tokoro）</p>
+      <p class="profile__role">株式会社プロバイダル 代表取締役</p>
+      <p class="profile__bio">受託開発・AI導入支援・LINE連携・業務システム開発を手がけるProvydalを創業。「課題に合わせて、必要な開発を。」をコンセプトに、中小企業・スタートアップのデジタル化を伴走型でサポートしている。</p>
+    </div>
+  </div>
+
+  <div class="interview">
+
+    <div>
+      <div class="interview-q">
+        <p>AI導入の相談を受けていて、一番多く感じる「経営者の勘違い」は何ですか？</p>
+      </div>
+      <div class="interview-a">
+        <span class="interview-a__label">所 和哉</span>
+        <p>「ChatGPTのアカウントを作れば、AIを導入したことになる」という認識でしょうか。ツールを入れることと、業務に組み込むことは、まったく別の話なんです。</p>
+        <p>よく聞くのが、「研修を1回やったんだけど、誰も使ってない」というパターン。研修でいくら「こんなことができます」と説明しても、日常業務のどこで・どう使うかが設計されていなければ、1ヶ月後には元通りです。</p>
+        <div class="quote">
+          <p>ツールを入れることがゴールではない。業務が変わることがゴールです。その設計をしないまま、とりあえず導入しても何も変わらない。</p>
+          <p class="quote__attr">— 所 和哉</p>
+        </div>
+        <p>だから私たちは、相談を受けたときにまず「どの業務フローに組み込むか」から考えます。技術の話は、その後です。</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="interview-q">
+        <p>Provydalが「伴走型」にこだわるのはなぜですか？</p>
+      </div>
+      <div class="interview-a">
+        <span class="interview-a__label">所 和哉</span>
+        <p>一言で言うと、「作って終わり」では意味がないからです。</p>
+        <p>開発や導入支援の会社は、成果物を納品したら終わりというビジネスモデルが多い。でも、クライアントの本当のゴールは「システムが完成すること」ではなく、「業務が効率化されること」「売上が上がること」ですよね。</p>
+        <p>だから私たちは、要件定義・設計・開発・テスト・導入・研修・フォローアップまで、一気通貫で関わります。納品後に「うまく使えていない」となっても、一緒に改善する。それが伴走です。</p>
+        <div class="quote">
+          <p>小さい会社だからこそ、1つ1つの案件に深く入れる。大手には真似できない、「クライアントの中の人」みたいな関わり方ができると思っています。</p>
+          <p class="quote__attr">— 所 和哉</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="interview-q">
+        <p>「技術より課題の理解が先」というスタンスは、どこから来ているのですか？</p>
+      </div>
+      <div class="interview-a">
+        <span class="interview-a__label">所 和哉</span>
+        <p>エンジニアって、技術が好きだから、どうしても技術の話から入りがちなんです。「これはReactで作れます」「AIならこういうことができます」って。でも、クライアントが本当に聞きたいのは、「自分の問題が解決できるかどうか」なんですよね。</p>
+        <p>以前、あるEC事業者さんから「売上を上げたい」という相談を受けたんです。最初はWebリニューアルの話だったんですが、ヒアリングを重ねると、本当の課題はカゴ落ちの多さとリピート率の低さでした。そこでLINEの自動化を提案したら、新しいサイトを作るより早く、しかも低コストで成果が出た。</p>
+        <div class="quote">
+          <p>「何を作るか」を先に決めてはいけない。「何を解決したいか」を徹底的に理解してから、初めて技術の話をする。その順番を絶対に崩さないようにしています。</p>
+          <p class="quote__attr">— 所 和哉</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="interview-q">
+        <p>AI・開発業界は今後どう変わっていくと見ていますか？中小企業経営者はどう備えればいいでしょうか？</p>
+      </div>
+      <div class="interview-a">
+        <span class="interview-a__label">所 和哉</span>
+        <p>2〜3年以内に、「AIを使っている企業」と「使っていない企業」の生産性の差は、かなり開くと思っています。ただ、大事なのは「使い方を知っているかどうか」ではなく、「業務フローに組み込めているかどうか」です。</p>
+        <p>経営者の方に伝えたいのは、「まず1つの業務だけ試してみてほしい」ということです。議事録でも、問い合わせ対応でも、報告書でも。全社展開を最初から考えなくていい。小さく始めて、成功体験を積むことが、組織全体に広がる一番の近道です。</p>
+        <div class="quote">
+          <p>「AIを使う会社」か「使わない会社」かではなく、「AIを業務に組み込んでいる会社」と「そうでない会社」に分かれていく。前者は少人数でも大きな成果を出せるようになる。それが今の変化の本質だと思っています。</p>
+          <p class="quote__attr">— 所 和哉</p>
+        </div>
+        <p>Provydalは、そのプロセスを一緒に歩むパートナーでありたいと思っています。技術は手段で、目的はあくまでクライアントのビジネスが良くなること。その軸は、これからも変わりません。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="art-section">
+    <h2>AI・開発業界の将来——所が見る3つのトレンド</h2>
+    <div class="future-grid">
+      <div class="future-card">
+        <span class="future-card__label">Trend 01</span>
+        <h4>「AI導入」は差別化から前提条件へ</h4>
+        <p>今はAIを使っていること自体が競争優位になるが、2〜3年後には「使って当たり前」の時代に。差別化は「どう使いこなすか」に移っていく。</p>
+      </div>
+      <div class="future-card">
+        <span class="future-card__label">Trend 02</span>
+        <h4>少人数でも大企業と戦えるようになる</h4>
+        <p>AI・自動化の活用により、5人以下の会社でも以前は50人必要だった業務量をこなせる時代が来る。中小企業にとって最大のチャンス。</p>
+      </div>
+      <div class="future-card">
+        <span class="future-card__label">Trend 03</span>
+        <h4>「業務を知っているエンジニア」の価値が上がる</h4>
+        <p>技術だけ知っているエンジニアより、業界・業務を深く理解して課題解決できるエンジニアの需要が急速に高まっていく。</p>
+      </div>
+      <div class="future-card">
+        <span class="future-card__label">Trend 04</span>
+        <h4>「作って終わり」型の開発会社は淘汰される</h4>
+        <p>AIがコードを書ける時代、価値は「作る技術」より「何を作るべきかを判断する力」と「成果が出るまで関わる覚悟」に移っていく。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="art-cta">
+    <h3>「何から始めればいいか」<br>その相談から始まります</h3>
+    <p>課題が整理できていなくても大丈夫です。<br>まずは代表・所と30分、話してみてください。</p>
+    <a href="/contact/">無料相談はこちら<span>Contact Us — 初回ヒアリング無料</span></a>
+  </div>
+
+  <div class="art-related">
+    <h3>Related</h3>
+    <div class="art-related-grid">
+      <a href="/news/ai-service/" class="art-related-card">
+        <span class="art-related-card__tag">お知らせ</span>
+        <span class="art-related-card__title">生成AI導入支援サービスの提供を本格開始</span>
+      </a>
+      <a href="/service/ai/" class="art-related-card">
+        <span class="art-related-card__tag">Service</span>
+        <span class="art-related-card__title">AI導入支援サービスの詳細はこちら</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo"><span class="footer__logo-bar"></span>Provydal</div>
+      <nav class="footer__nav">
+        <div class="footer__nav-col"><p class="footer__nav-label">Who we are</p><a href="/about/">会社概要</a></div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-label">What we do</p>
+          <a href="/service/dev/">受託開発 / Web制作</a>
+          <a href="/service/ai/">AI導入支援</a>
+          <a href="/service/line/">LINE連携 / 業務自動化</a>
+          <a href="/service/sys/">業務システム開発</a>
+        </div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Update</p><a href="/news/">ニュース</a><a href="/career/">採用情報</a><a href="/works/">実績・事例</a></div>
+        <div class="footer__nav-col"><p class="footer__nav-label">Contact</p><a href="/contact/">お問い合わせ</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__address">Tokyo, Japan</p>
+      <p class="footer__copy">&copy; 2024 Provydal Inc.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var burger=document.getElementById('burger');
+  var overlay=document.getElementById('menuOverlay');
+  if(!burger||!overlay)return;
+  burger.addEventListener('click',function(){
+    var open=overlay.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow='';
+    });
+  });
+  window.addEventListener('scroll',function(){
+    if(nav)nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
